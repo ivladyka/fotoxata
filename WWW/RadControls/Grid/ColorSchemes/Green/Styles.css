@@ -1,0 +1,65 @@
+.RadGrid th, .RadGrid th a
+{ 
+	font: bold 11px Tahoma;
+	color: black;
+}
+
+.RadGrid td, .RadGrid td a
+{ 
+	font: 11px tahoma;
+	color: #000000;
+}
+
+.RadGrid input, .RadGrid select
+{ 
+	font: 10px tahoma;
+	color: #000000;	
+}
+
+.EditFormCaptionRow td
+{
+	color: White;
+	font-weight:bold;
+}
+
+.GridRow
+{
+	background-color:#E5E7D8;
+	height: 16px;
+}
+
+.GridAltRow
+{
+	background-color:#F7F6EB;
+	height: 16px;
+}
+
+.GridPager
+{
+	/*background-color:#809E72;*/
+	background-image: url(Img/bg.gif);	
+}
+
+.GridPager td
+{
+	font: 11px Tahoma;
+	color: black;
+}
+
+.GridPager td a
+{
+	font: bold 11px Tahoma;
+	color: black;
+}
+
+.GridHeader
+{
+	/*background-color:#809E72;*/
+	background-image: url(Img/headerBg.gif);
+	height: 35px;
+}
+
+.GridFooter
+{
+	background-color:#FEFCE8;	
+}

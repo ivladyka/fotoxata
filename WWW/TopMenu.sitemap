@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode>
+		<siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=70" title="ПРО НАС"  description="ПРО НАС" />
+		<siteMapNode url="~/Default.aspx?content=GalleryTableList" title="ГАЛЕРЕЯ"  description="ГАЛЕРЕЯ"/>
+    <siteMapNode url="~/Default.aspx?content=TreeView&#038;CategoryID=75" title="ПОСЛУГИ"  description="ПОСЛУГИ"  >
+      <siteMapNode url="~/Default.aspx?content=TreeView&#038;CategoryID=76" title="СТУДІЙННА ХУДОЖНЯ ФОТОГРАФІЯ"  description="СТУДІЙННА ХУДОЖНЯ ФОТОГРАФІЯ">
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=2" title="ВЕСІЛЬНЕ ФОТО"  description="ВЕСІЛЬНЕ ФОТО"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=53" title="РОДИННА ФОТОГРАФІЯ"  description="РОДИННА ФОТОГРАФІЯ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=3" title="ДИТЯЧА ФОТОГРАФІЯ"  description="ДИТЯЧА ФОТОГРАФІЯ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=54" title="ФОТО ТВАРИН"  description="ФОТО ТВАРИН"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=56" title="ФОТО УРОЧИСТИХ ПОДІЙ"  description="ФОТО УРОЧИСТИХ ПОДІЙ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=57" title="ПРЕДМЕТНА ФОТОЗЙОМКА"  description="ПРЕДМЕТНА ФОТОЗЙОМКА"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=4" title="ПОРТФОЛІО"  description="ПОРТФОЛІО"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=58" title="9 МІСЯЦІВ"  description="9 МІСЯЦІВ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=59" title="ФОТО В СТИЛІ 'NUO'"  description="ФОТО В СТИЛІ 'NUO'"/>
+      </siteMapNode>
+      <siteMapNode url="~/Default.aspx?content=TreeView&#038;CategoryID=77" title="ВИЇЗНА ФОТОГРАФІЯ"  description="ВИЇЗНА ФОТОГРАФІЯ">
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=40" title="ФОТОЗЙОМКА ВЕСІЛЬ"  description="ФОТОЗЙОМКА ВЕСІЛЬ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=41" title="ВИПУСКНІ ВЕЧОРИ"  description="ВИПУСКНІ ВЕЧОРИ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=42" title="КОРПОРАТИВИ"  description="КОРПОРАТИВИ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=43" title="ХРИСТИНИ"  description="ХРИСТИНИ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=44" title="ЗЙОМКА ІНТЕР`ЄРІВ ТА ЕКСТЕР`РІВ"  description="ЗЙОМКА ІНТЕР`ЄРІВ ТА ЕКСТЕР`РІВ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=45" title="СПОРТИВНІ ЗМАГАННЯ"  description="СПОРТИВНІ ЗМАГАННЯ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=46" title="ПРИЧАСТЯ"  description="ПРИЧАСТЯ"/>
+      </siteMapNode>
+      <siteMapNode url="~/Default.aspx?content=TreeView&#038;CategoryID=78" title="ЦИФРОВИЙ ФОТОДРУК"  description="ЦИФРОВИЙ ФОТОДРУК">
+        <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=47" title="КАДРУВАННЯ"  description="КАДРУВАННЯ"/>
+        <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=48" title="ФОРМУВАННЯ АЛЬБОМІВ З АРХІВІВ"  description="ФОРМУВАННЯ АЛЬБОМІВ З АРХІВІВ"/>
+        <siteMapNode url="~/Default.aspx?content=OrderAdd&#038;CategoryID=9" title="ДРУК ЧЕРЕЗ ІНТЕРНЕТ"  description="ДРУК ЧЕРЕЗ ІНТЕРНЕТ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=50" title="КОРЕКЦІЯ ЧЕРВОНИХ ОЧЕЙ"  description="КОРЕКЦІЯ ЧЕРВОНИХ ОЧЕЙ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=51" title="КОРЕКЦІЯ КОЛЬОРУ ТА ЯСКРАВОСТІ"  description="КОРЕКЦІЯ КОЛЬОРУ ТА ЯСКРАВОСТІ"/>
+        <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=52" title="БІЛІ ТА КОЛЬОРОВІ РАМКИ"  description="БІЛІ ТА КОЛЬОРОВІ РАМКИ"/>
+      </siteMapNode>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=11" title="ВІДЕО ПОСЛУГИ"  description="ВІДЕО ПОСЛУГИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=65" title="ВИПУСКНІ АЛЬБОМИ ТА ПЛАНШЕТКИ"  description="ВИПУСКНІ АЛЬБОМИ ТА ПЛАНШЕТКИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=72" title="ДРУК ФОТОГРАФІЙ З ЦИФРОВИХ НОСІЇВ"  description="ДРУК ФОТОГРАФІЙ З ЦИФРОВИХ НОСІЇВ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=83" title="ФОТОКНИГИ"  description="ФОТОКНИГИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=27" title="ДРУК З ПЛІВКИ"  description="ДРУК З ПЛІВКИ"/>  
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=38" title="СКАНУВАННЯ ПЛІВОК ТА ФОТОГРАФІЙ"  description="СКАНУВАННЯ ПЛІВОК ТА ФОТОГРАФІЙ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=37" title="ПРОЯВКА КОЛЬОРОВИХ ТА ЧОРНОБІЛИХ ПЛІВОК"  description="ПРОЯВКА ПЛІВОК"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=33" title="ФОТО НА ДОКУМЕНТИ"  description="ФОТО НА ДОКУМЕНТИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=26" title="ОФОРМЛЕННЯ ФОТОГРАФІЙ В ПАСПАРТУ ТА РАМИ"  description="ОФОРМЛЕННЯ ФОТОГРАФІЙ В ПАСПАРТУ ТА РАМИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=1" title="ФОТО З МОБІЛЬНИХ ТЕЛЕФОНІВ"  description="ФОТО З МОБІЛЬНИХ ТЕЛЕФОНІВ"/>  
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=10" title="ФОТО НА КЕРАМІЦІ"  description="ФОТО НА КЕРАМІЦІ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=36" title="ФОТО НА ДИСКАХ"  description="ФОТО НА ДИСКАХ"/>   
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=29" title="ДРУК НА ХОЛСТІ"  description="ДРУК НА ХОЛСТІ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=34" title="ФОТОШПАЛЕРИ"  description="ФОТОШПАЛЕРИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=5" title="ВІЗИТКИ, ЗАПРОШЕННЯ"  description="ВІЗИТКИ, ЗАПРОШЕННЯ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=28" title="МОНТАЖ, КОЛАЖ"  description="МОНТАЖ, КОЛАЖ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=35" title="ЗБІЛЬШЕННЯ, ЗМЕНШЕННЯ ТА РЕСТАВРАЦІЯ ФОТОГРАФІЙ"  description="ЗБІЛЬШЕННЯ, ЗМЕНШЕННЯ ТА РЕСТАВРАЦІЯ ФОТОГРАФІЙ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=39" title="КОЛЬОРУВАННЯ ЧОРНОБІЛИХ ФОТОГРАФІЙ"  description="КОЛЬОРУВАННЯ ЧОРНОБІЛИХ ФОТОГРАФІЙ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=60" title="ЛАМІНУВАННЯ"  description="ЛАМІНУВАННЯ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=61" title="РОЗДРУК ТЕКСТІВ"  description="РОЗДРУК ТЕКСТІВ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=63" title="ЧОРНОБІЛИЙ ТА КОЛЬОРОВИЙ КСЕРОКС"  description="ЧОРНОБІЛИЙ ТА КОЛЬОРОВИЙ КСЕРОКС"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=64" title="ЗАПРАВКА КАРТРІДЖІВ"  description="ЗАПРАВКА КАРТРІДЖІВ"/>
+    </siteMapNode>
+		<siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=6" title="ФОТОТОВАРИ"  description="ФОТОТОВАРИ"/>
+    <siteMapNode url="~/Default.aspx?content=TreeView&#038;CategoryID=79" title="СУВЕНІРИ"  description="СУВЕНІРИ">
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=73" title="HAND-MADE "  description="HAND-MADE "/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=12" title="ПАЗЛИ"  description="ПАЗЛИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=13" title="ПОДУШКИ"  description="ПОДУШКИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=14" title="МАГНІТИ"  description="МАГНІТИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=15" title="ГОРНЯТКА"  description="ГОРНЯТКА"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=16" title="КРАВАТКИ"  description="КРАВАТКИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=17" title="ВАРІО ЗОБРАЖЕННЯ"  description="ВАРІО ЗОБРАЖЕННЯ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=18" title="ЕТИКЕТКИ НА ПЛЯШКИ"  description="ЕТИКЕТКИ НА ПЛЯШКИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=19" title="КАЛЕНДАРІ"  description="КАЛЕНДАРІ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=20" title="ГОДИННИКИ"  description="ГОДИННИКИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=21" title="КИЛИМКИ ДЛЯ МИШКИ"  description="КИЛИМКИ ДЛЯ МИШКИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=25" title="ФУТБОЛКИ"  description="ФУТБОЛКИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=22" title="ТРУСИ"  description="ТРУСИ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=23" title="ФОТО НА СВІТИЛЬНИКАХ"  description="ФОТО НА СВІТИЛЬНИКАХ"/>
+      <siteMapNode url="~/Default.aspx?content=GalleryPhotoView&#038;CategoryID=24" title="ТАРІЛКИ"  description="ТАРІЛКИ" />
+  </siteMapNode>
+    <siteMapNode url="~/Default.aspx?content=NewsLinkList" title="НОВИНИ"  description="НОВИНИ"/>
+    <siteMapNode url="~/Default.aspx?pricePDF=true" title="ПРАЙС"  description="ПРАЙС"/>
+    <siteMapNode url="~/Default.aspx?content=TreeView&#038;CategoryID=80" title="ЦІКАВЕ"  description="ЦІКАВЕ" >
+      <siteMapNode url="~/Default.aspx?content=AdviceTableList" title="ПОРАДИ"  description="ПОРАДИ" />
+      <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=66" title="АНЕКДОТИ"  description="АНЕКДОТИ" />
+      <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=67" title="СМІШНЕ ФОТО"  description="СМІШНЕ ФОТО" />
+      <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=68" title="ПОДОРОЖІ"  description="ПОДОРОЖІ" />
+      <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=69" title="КУРЙОЗИ З ЖИТТЯ ФОТОГРАФА"  description="КУРЙОЗИ З ЖИТТЯ ФОТОГРАФА" />
+    </siteMapNode>
+		<siteMapNode url="~/Default.aspx?content=PhotoSalonLinkList" title="КОНТАКТИ"  description="КОНТАКТИ" />
+  </siteMapNode>
+</siteMap>

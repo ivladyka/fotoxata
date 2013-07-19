@@ -1,0 +1,823 @@
+﻿html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body
+{
+font-family: Verdana, Tahoma, Arial; 
+font-size: 9pt;
+color:#a1a1a1;
+ margin:0px;
+ height:100%;
+background-color:#ffffff;
+text-align: center;
+ }
+ INPUT
+{
+	font-family: Arial, Verdana;
+	font-size: 11px;
+	border: 1px solid #eaeaea;
+}
+
+SELECT
+{
+	font-family: Arial, Verdana;
+	font-size: 11px;
+	border: 1px solid #eaeaea;
+}
+
+TEXTAREA
+{
+	font-family: Arial, Verdana;
+	font-size: 11px;
+	border: 1px solid #eaeaea;
+}
+ .PageNameStyle 
+ {
+ 	color:#a1a1a1;
+ 	font-family: GOTHIC1;
+ 	font-size:14pt;
+ 	font-weight:normal;
+ 	text-align:left;
+ }
+ .pageName
+{ font-family: GOTHIC1;
+  font-size:24pt;
+  font-weight:normal;
+  text-transform: uppercase; 
+  color:#a1a1a1;
+}
+.radFocusedCss_Default2006
+{
+border: 1px solid #eaeaea !important;
+color:#a1a1a1 !important;
+}
+.radEnabledCss_Default2006
+{
+border: 1px solid #eaeaea !important;
+color:#a1a1a1 !important;
+}
+
+ .Divstyle1
+ {
+      z-index: 2; 
+      width: 100%; 
+      top: 0px; 
+      position:  absolute; 
+      min-height:100%;
+      left:0px; 
+      right:0px;
+      overflow:hidden;
+ }
+ .DivHeader1
+ {
+     width: 1000px; 
+     top: 0px; 
+     position:relative; 
+     float:none;
+ }
+ .DivTopHeader
+ {
+width:1000px; 
+height:145px;
+ }
+ .Logodiv
+ {
+     float: left; 
+     width:231px; 
+     height:43px; 
+     margin-left:11px; 
+     padding-top:64px;
+ }
+ .exitbutton
+ {
+     height:30px; 
+     vertical-align:middle;  
+     float:left; 
+     padding-top:7px; 
+     padding-left:10px; 
+     padding-right:10px; 
+     padding-bottom:0px;
+ }
+ .loginbutton
+ {
+     height:30px; 
+     vertical-align:middle;  
+     float:left; 
+     padding-top:7px; 
+     padding-bottom:0px;  
+     padding-left:10px; 
+     padding-right:10px;
+ }
+ .OfficeOnlinebutton
+ {
+      height:30px; 
+      vertical-align:middle;  
+      float:left; 
+      padding-top:7px; 
+      padding-bottom:0px;  
+      padding-left:10px; 
+      padding-right:10px;
+ }
+ .PrintPhotoInternetButton
+ {
+     width: 160px;  
+     vertical-align:middle; 
+     background-color:#a1a1a1;   
+     float:left; 
+     padding-top:5px; 
+     padding-bottom:8px;   
+     padding-right:5px; 
+     margin-right: 10px;
+ }
+ .Topmenustyle
+{
+    margin: 0px;
+    width: 750px;
+    float: right;
+    vertical-align: bottom !important;
+    z-index: 1500;
+    position: relative;
+ 
+}
+.DynamicMenustyle1
+{
+z-index:10000 !important;
+position:absolute;
+margin-top:5px;
+white-space: normal !important;
+
+}
+.DynMenuItemStyle
+{
+    float:left;
+    text-align:left !important;
+}
+.ctl00_TopMenu_ctl00_1
+{
+    white-space: normal !important;
+}
+ .SiteMapMenustyle
+{
+    margin: 10px 0px 0px 20px;
+    padding: 0px;
+    float: left;
+    position: relative;
+} 
+.titleQuestion
+  {
+ 	color:#a1a1a1;
+ 	font-family: GOTHIC1;
+ 	font-size:14pt;
+ 	font-weight:normal;
+ 	vertical-align:bottom
+
+ }
+ .Advicetext.p
+ {
+     margin:0px;
+     padding:0px;
+ }
+ @font-face {
+ font-family: GOTHIC1;
+ src: url("Font/GOTHIC.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: GOTHIC1;
+ src: url("Font/GOTHIC.TTF") /* TTF file for CSS3 browsers */
+}
+.Adviceslink
+{
+    text-decoration:none;
+    color:#a1a1a1;
+    font-size:10pt;
+     font-family: GOTHIC1;
+    
+}
+.Adviceslink:hover
+{
+    text-decoration:none;
+     color:#ed1c24;
+     font-family: GOTHIC1;
+}
+ .Headerlink:visited
+ {
+      text-decoration:none;
+    color:#a1a1a1;
+    font-size:10pt;
+     font-family: GOTHIC1;
+
+ }
+  .Headerlink:active
+ {
+    text-decoration:none;
+     color:#ed1c24;
+     font-family: GOTHIC1;
+
+ }
+  .Headerlink:hover
+ {  text-decoration:none;
+     color:#ed1c24;
+     font-family: GOTHIC1;
+
+ }
+  .Headerlink
+{
+      text-decoration:none;
+    color:#a1a1a1;
+    font-size:9pt;
+     font-family: GOTHIC1;
+    
+}  
+   .whitelink
+{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 9pt;
+    font-family: GOTHIC1;
+    text-decoration:none;
+    vertical-align: middle;
+
+}
+ .whitelink:visited
+ {
+     text-decoration:none;
+
+ }
+  .whitelink:active
+ {
+     text-decoration:underline;
+
+ }
+  .whitelink:hover
+ {  text-decoration:underline;
+
+ }
+  .whitelink:link
+ {  text-decoration :none;
+
+ }  
+ 
+ .topmenuclass
+ {
+     text-decoration:none;
+    color:#a1a1a1;
+     font-family: GOTHIC1;
+     margin-top:60px;
+     margin-bottom:0px;
+     padding-bottom:0px;
+     padding-top:0px;
+    border: solid 1px red;
+ }
+.topmenuclass:visited
+ {
+     text-decoration:none;
+    color:#a1a1a1;
+
+ }
+.topmenuclass:active
+ {
+     text-decoration:underline;
+     color:#ed1c24;
+
+ }
+.topmenuclass:hover
+ {  text-decoration:underline;
+     color:#ed1c24;
+
+ }
+.topmenuclass:link
+ {  text-decoration :none;
+      color:#a1a1a1;
+
+ }  
+ .defaultimage
+ {
+     border-right: 2px solid #ed1c24 !important;
+     border-bottom: 2px solid #ed1c24 !important;
+
+ }
+ .PathSeparator
+{
+    background-image: url('NewImages/separator.gif');
+    background-repeat:no-repeat;
+    width:15px;
+    height:15px;
+    vertical-align:middle;
+}
+.activeNodeStyle:active
+{ color:#ed1c24 !important; 
+}
+.activeNodeStyle:hover
+{ color:#ed1c24 !important;
+}
+.homepagetabl
+{
+ width:215px; 
+ float:left; 
+ height:200px;
+ font-size: 22pt;
+ font-family: GOTHIC1;
+ margin-top:0px;
+ margin-left:15px;
+ margin-right:15px;
+ text-align:left  !important; 
+}
+.homepagetablheader
+{
+    text-decoration:none !important; 
+    color:#a1a1a1;
+     font-family: GOTHIC1;
+     }
+.homepagetablheader:visited
+ {
+     text-decoration:none;
+    color:#a1a1a1;
+
+ }
+.homepagetablheader:active
+ {
+    text-decoration:none !important; 
+     color:#ed1c24;
+
+ }
+.homepagetablheader:hover
+{
+    text-decoration:none !important; 
+     color:#ed1c24;
+
+ }
+.homepagetablheader:link
+ {  text-decoration :none;
+      color:#a1a1a1;
+
+ }  
+.textBoxStyle
+ {
+     font-size:10pt;
+     width:300px;
+     border:solid 1px #eaeaea;
+     background-color:#fbfbfb;
+ }
+ .textBoxStyle2
+ {
+     font-size:8pt;
+     width:300px;
+     border:solid 1px #eaeaea;
+     margin:5px;
+        background-color:#fbfbfb;
+ }
+  .textBoxStyle3
+ {
+     font-size:8pt;
+     width:173px;
+     border:solid 1px #eaeaea;
+     margin:5px;
+        background-color:#fbfbfb;
+ }
+   .textBoxStyle4
+ {
+     font-size:8pt;
+     width:50px;
+     border:solid 1px #eaeaea;
+     margin:5px;
+     background-color:#fbfbfb;
+ }
+    .textBoxStyle5
+ {
+     font-size:8pt;
+     width:120px;
+     border:solid 1px #eaeaea;
+     background-color:#fbfbfb;
+ }
+     .textBoxStyle6
+ {
+     font-size:8pt;
+     width:100px;
+     border:solid 1px #eaeaea;
+     margin:5px;
+     margin-left:25px;
+     margin-right:35px;   
+     background-color:#fbfbfb;
+ }
+      .textBoxStyle7
+ {
+     font-size:8pt;
+     width:100px;
+     border:solid 1px #eaeaea;
+     margin:5px;
+     margin-left:30px;
+     margin-right:10px;
+     background-color:#fbfbfb;
+ }
+       .textBoxStyle8
+ {
+     font-size:8pt;
+     width:135px;
+     border:solid 1px #eaeaea;
+     margin:5px;
+     margin-left:15px;
+     background-color:#fbfbfb;
+ 
+ }
+        .textBoxStyle9
+ {
+     font-size:8pt;
+     width:20px;
+     border:solid 1px #eaeaea;
+     margin:5px;
+     margin-left:15px;
+     background-color:#fbfbfb;
+ 
+ }
+  .textBoxStyle10
+ {
+     font-size:10pt;
+     width:100px;
+     border:solid 1px #eaeaea;
+     background-color:#fbfbfb;
+ }
+   .textBoxStyle15
+ {
+     font-size:10pt;
+     width:50px;
+     border:solid 1px #eaeaea;
+     background-color:#fbfbfb;
+ }
+  .textBoxStyle11
+ {
+     font-size:10pt;
+     width:20px;
+     border:solid 1px #eaeaea;
+     background-color:#fbfbfb;
+ }
+  .textBoxStyle12
+ {
+     font-size:10pt;
+     width:430px;
+     border:solid 1px #eaeaea;
+     background-color:#fbfbfb;
+ }
+ .textBoxStyle13
+ {
+     font-size:10pt;
+     width:120px;
+     border:solid 1px #eaeaea;
+     background-color:#fbfbfb;
+ }
+ .formStyle
+{
+    margin:0px; 
+    padding:0px;
+    text-align:center;
+    }
+    
+    TABLE.EditControl3
+{	
+	float:left;
+	padding-top :10px;
+	padding-left :10px;
+	padding-right :10px;
+	padding-bottom:0px;
+    height:auto;
+	vertical-align:middle;
+	margin:30px;
+	text-align:left;
+}
+
+#ulmenu li
+{
+    height:30px;
+ }
+ #ulmenu li a
+{
+    font-size:12pt;
+ }
+ TABLE.EditControl4
+{	
+	float:left;
+	
+	padding-top :10px;
+	padding-left :10px;
+	padding-right :10px;
+	padding-bottom:0px;
+    height:auto;
+	vertical-align:middle;
+	margin:5px;
+	text-align:left;
+}
+.TelerikModalOverlay  
+    { 
+     background:  white !important;
+      filter: alpha(opacity=80) !important;/*for IE 5.5+*/ 
+      opacity: .80 !important ;/*for FF 2x, Opera 9x*/ 
+      -moz-opacity: .80 !important;/*for FF 1x*/  
+    } 
+
+.RadWModalImage
+
+{
+    background: white !important;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+    opacity: .8 !important;
+    -moz-opacity: .8 !important;
+}
+.WindowPageName
+{
+    font-family: GOTHIC1;
+ 	font-size:14pt;
+ 	font-weight:normal;
+ 	float:left; 
+ 	width: 300px;  
+ 	color: #ed1c24;
+}
+.CancelButtonStyle
+{
+    float:right; 
+    width: 16px; 
+    height: 16px; 
+}
+.rsAptSubject
+{
+ 	font-size:10pt;
+ 	font-weight:normal !important;
+ 	color:#a1a1a1;
+}
+A.VIKKI_ScheduleLink:link
+{
+	font-family: GOTHIC1;
+ 	font-size:14pt  !important;
+ 	color:#a1a1a1;
+}
+
+A.VIKKI_ScheduleLink:visited
+{
+	font-family: GOTHIC1;
+ 	font-size:14pt  !important;
+	color:#a1a1a1;
+}
+
+A.VIKKI_ScheduleLink:active
+{
+	 font-family: GOTHIC1;
+ 	font-size:14pt  !important;
+ 	 color:#ed1c24;
+}
+
+A.VIKKI_ScheduleLink:hover    {
+    font-family: GOTHIC1;
+ 	font-size:14pt  !important;
+ 	color:#ed1c24;
+}
+.rgSelectedRow
+{
+    background-color:#c9c9c9 !important;
+    color:#a1a1a1 !important;
+
+}
+.GaleryImageStyle:link img
+{
+    filter: alpha(opacity=50) !important; 
+    opacity: 0.5 !important; 
+    -moz-opacity:0.5 !important; 
+}
+.GaleryImageStyle:hover img
+{
+
+   filter: alpha(opacity='99') !important;
+   opacity: 0.99 !important;/*for FF 2x, Opera 9x*/ 
+   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=99)" !important;
+   -moz-opacity: .99 !important;/*for FF 1x*/         
+}
+.GaleryThImageStyle
+{
+    height: 237px;
+    width: 330px;    
+    CURSOR: pointer;
+}
+.galerytext
+{ 
+}
+.ThNoImageStyle
+{
+    vertical-align:middle !important;
+    text-align:center !important;
+    float:none;
+}
+.GaleryImageStyle:link
+{
+  text-decoration:none !important;
+}
+.GaleryImageStyle:link span
+{
+  margin-top:10px;
+  margin-bottom:20px;
+  font-family: GOTHIC1;
+  font-size:12pt  !important;
+  color:#a1a1a1;
+  text-align:left !important;
+  text-decoration:none !important;
+}
+.GaleryImageStyle:hover span
+{
+  margin-top:10px;
+  margin-bottom: 20px;
+  font-family: GOTHIC1;
+  font-size: 12pt  !important;
+  color: #ed1c24;
+  text-align: left !important;
+  text-decoration: none !important;
+}
+.FasilityStyle
+{
+  margin-top:10px;
+  margin-bottom:20px;
+  font-family: GOTHIC1;
+  font-size:12pt  !important;
+  color:#a1a1a1;
+  text-align:center !important;
+  text-decoration:none !important;
+  text-transform: uppercase;
+}
+.FasilitytextStyle
+{
+  margin-top:10px;
+  margin-bottom:20px;
+  font-family: GOTHIC1;
+  font-size:12pt  !important;
+  color:#a1a1a1;
+  text-align:left !important;
+  text-decoration:none !important;
+}
+.FasilityStyleprice
+{
+  margin-top:10px;
+  margin-bottom:20px;
+  font-family: GOTHIC1;
+  font-size:14pt  !important;
+  color: #ed1c24;
+  text-align:center !important;
+  text-decoration:none !important;
+  text-transform: uppercase;
+}
+.titleNewslink
+{
+    text-decoration:none;
+    color:#a1a1a1;
+    font-size:14pt;
+     font-family: GOTHIC1;
+    
+}
+.titleNewslink:hover
+{
+    text-decoration:none;
+     color:#ed1c24;
+     font-family: GOTHIC1;
+}
+    .RadGrid_Sitefinity 
+    {
+    color: #a1a1a1 !important;
+}
+.dottedtop
+{
+    background-position: left top;
+    background-image: url("NewImages/dottedline.gif");
+    background-repeat: repeat-x;
+    padding-right: 0;
+    padding-top: 10;
+    overflow:hidden;
+    padding-top:20px;
+width:100%;
+}
+.bottomdottedtop
+{
+    background-position: left top;
+    background-image: url("NewImages/dottedline.gif");
+    background-repeat: repeat-x;
+    padding: 0px;
+   width:100%;
+    height: 1px;
+    vertical-align: bottom !important;
+    bottom: 20px !important;
+    position: relative !important;
+    float:left;
+    overflow:hidden;
+    }
+.parentstyle
+{
+    width:220px  !important;
+     white-space: normal !important;
+}
+.Nodestyle
+{
+    white-space: normal !important;
+    height: 30px !important;
+      font-family: GOTHIC1 !important;
+}
+#languages
+{
+    float:left; 
+    color:#a1a1a1;
+    font-size: 10pt;
+    text-align: left;
+    vertical-align: top; 
+    font-family:GOTHIC1;
+}
+#languages a
+{
+    color:#a1a1a1;
+    font-size: 10pt;
+    vertical-align: top;
+    text-decoration: none;
+    font-family:GOTHIC1;
+}
+#languages a:link 
+{
+    color:#a1a1a1;    
+    text-decoration: none;
+    font-family:GOTHIC1;
+}
+#languages a:visited
+
+{
+    color:#a1a1a1;
+    text-decoration: none;
+    font-family:GOTHIC1;
+ }
+#languages a:hover
+{
+    color: #ed1c24;
+    text-decoration: underline;
+    font-family:GOTHIC1;
+}
+#languages a:active
+{
+   color:#a1a1a1;
+    text-decoration: underline;
+    font-family:GOTHIC1;
+}
+.VS_LangActive
+{
+  margin-top: 0px; 
+  color: #ed1c24;
+  border-bottom: solid 1px  #ed1c24 !important;  	
+ 	cursor: pointer;
+ 	font-family:GOTHIC1;
+}
+.VS_LangActive:link
+{
+ margin-top: 0px; 
+  color:#a1a1a1;
+  border-bottom: solid 1px  #ed1c24 !important; 	
+ 	cursor: pointer;
+ 	font-family:GOTHIC1;
+}
+.VS_LangActive:visited
+{
+ margin-top : 0px; 
+ color:#a1a1a1;
+ border-bottom: solid 1px  #ed1c24 !important; 	
+ 	cursor: pointer;
+ 	font-family:GOTHIC1;
+}
+.VS_LangActive:hover
+{
+  margin-top: 0px; 
+  color: #ed1c24;
+  border-bottom: solid 1px  #ed1c24 !important; 	
+ 	cursor: pointer;
+ 	font-family:GOTHIC1;
+ 	text-decoration:none  !important;
+}
+.VS_LangActive:active
+{
+	 margin-top: 0px; 
+  color:#a1a1a1;
+  border-bottom: solid 1px  #ed1c24 !important;
+ 	cursor:hand;
+ 	cursor: pointer;
+ 	font-family:GOTHIC1;
+ 	text-decoration:none !important;
+}
+.DynMenuHoverStyle
+{ width:100%;
+  height:100%
+  
+}
+
+img[alt='Skip Navigation Links'] 
+{
+    display: none;
+}

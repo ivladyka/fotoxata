@@ -1,0 +1,3 @@
+C:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\bin\Release\MyGeneration.dOOdads.dll
+C:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\obj\Release\ResolveAssemblyReference.cache
+C:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\obj\Release\MyGeneration.dOOdads.dll

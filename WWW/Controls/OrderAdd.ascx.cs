@@ -1,0 +1,621 @@
+﻿using System;
+using System.Collections;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using MyGeneration.dOOdads;
+using Telerik.Web.UI;
+using VikkiSoft_BLL;
+using Image=System.Web.UI.WebControls.Image;
+
+public partial class OrderAdd : ControlBase
+{
+
+    public OrderAdd()
+	{
+        
+	}
+
+    protected override void InitOnFirstLoading()
+    {
+        base.InitOnFirstLoading();
+        text_CellPhone.Focus();
+        LoadLoggedUserCellPhone();
+        auFile.TemporaryFolder = Utils.GaleryImagePath + "/RadUploadTemp";
+        auFile.Localization.Select = Resources.Fotoxata.Select;
+        auFile.Localization.Remove = Resources.Fotoxata.Remove;
+        rntbCount.Value = 1;
+        btnAddPhoto.Attributes["onclick"] = "return VIKKI_CheckUploadedFiles(false);";
+        btnAddOrder.Attributes["onclick"] = "return VIKKI_CheckUploadedFiles(true);";
+        btnAddPhoto.ImageUrl = "../NewImages/addphoto" + Utils.LangPrefix + ".gif";
+        btnAddPhoto.Attributes["onmouseover"] = "VIKKI_PuzzleOnMouseOver(event, 'NewImages/addphoto1" + Utils.LangPrefix + ".gif' );";
+        btnAddPhoto.Attributes["onmouseout"] = "VIKKI_PuzzleOnMouseOver(event, 'NewImages/addphoto" + Utils.LangPrefix + ".gif' );";
+        btnAddOrder.ImageUrl = "../NewImages/Ordering" + Utils.LangPrefix + ".gif";
+        btnAddOrder.Attributes["onmouseover"] = "VIKKI_PuzzleOnMouseOver(event, 'NewImages/Ordering1" + Utils.LangPrefix + ".gif' );";
+        btnAddOrder.Attributes["onmouseout"] = "VIKKI_PuzzleOnMouseOver(event, 'NewImages/Ordering" + Utils.LangPrefix + ".gif' );";
+        tdAddedPhoto.InnerHtml = Resources.Fotoxata.AddedPhotos + ":";
+        tdPriceOnPrint.InnerHtml = "<br />&nbsp;&nbsp;" + Resources.Fotoxata.PriceOnPrint;
+        LoadTitle();
+    }
+
+    private void LoadLoggedUserCellPhone()
+    {
+        if (Request.IsAuthenticated)
+        {
+            text_CellPhone.Text = LoggedUser.CellPhone;
+        }
+    }
+
+    protected void btnAddOrder_Click(object sender, System.EventArgs e)
+    {
+        AddOrder(true);
+    }
+
+    private void AddOrder(bool addOrder)
+    {
+        Order o = new Order();
+        string userName = "";
+        string cellPhone = text_CellPhone.Text.Trim();
+        if (OrderID == 0)
+        {
+            o.AddNew();
+            o.DateCreated = DateTime.Now;
+        }
+        else
+        {
+            o.LoadByPrimaryKey(OrderID);
+        }
+        if (addOrder)
+        {
+            o.OrderStatusID = 1;
+            VikkiSoft_BLL.User u = new User();
+            u.Where.CellPhone.Value = text_CellPhone.Text.Trim();
+            if (u.Query.Load())
+            {
+                o.UserID = u.UserID;
+                o.SetColumnNull(Order.ColumnNames.CellPhone);
+                userName = u.s_LastName + " " + u.s_FirstName;
+                cellPhone = u.s_CellPhone;
+            }
+            else
+            {
+                o.CellPhone = text_CellPhone.Text.Trim();
+                o.SetColumnNull(Order.ColumnNames.UserID);
+            }
+        }
+        o.DeliveryID = int.Parse(ddlDelivery.SelectedValue);
+        o.ClientNote = tbClientNote.Text;
+        o.Save();
+        OrderID = o.OrderID;
+
+        string orderFolder = Server.MapPath(Utils.OrderImagePath + "//" + OrderID);
+        string printFolder = Server.MapPath(Utils.PrintImagePath + "//" + OrderID);
+        if (!System.IO.Directory.Exists(printFolder + "//"))
+        {
+            System.IO.Directory.CreateDirectory(printFolder + "//");
+        }
+        int i = 1;
+        foreach (UploadedFile af in auFile.UploadedFiles)
+        {
+            string newGUID = "photo" + i.ToString();
+            int countPhoto = (int)rntbCount.Value;
+            string extension = af.GetExtension();
+            string newFileName = newGUID + extension;
+            string path = Path.Combine(orderFolder, newFileName);
+            if (!System.IO.Directory.Exists(orderFolder + "//"))
+            {
+                System.IO.Directory.CreateDirectory(orderFolder + "//");
+            }
+            af.SaveAs(path, true);
+            OrderPhoto op = new OrderPhoto();
+            op.AddNew();
+            op.ClientPhotoName = af.FileName;
+            op.Count = countPhoto;
+            op.Border = chkBorder.Checked;
+            op.PaperTypeID = int.Parse(paperTypeChoice.SelectedValue);
+            op.MerchandiseID = int.Parse(photoFormatChoice.SelectedValue);
+            op.OrderID = OrderID;
+            op.PhotoName = newFileName;
+            op.Save();
+            try
+            {
+                System.IO.FileStream fs = System.IO.File.OpenRead(Path.Combine(orderFolder, newFileName));
+                byte[] b = new byte[fs.Length];
+                fs.Read(b, 0, b.Length);
+                newFileName = newGUID + "_s" + extension;
+                Utils.ResizeAndSaveJpgImage(b, 79, 120, Path.Combine(orderFolder, newFileName), true);
+
+                newFileName = newGUID + "_m" + extension;
+                Utils.ResizeAndSaveJpgImage(b, 500, 620, Path.Combine(orderFolder, newFileName), true);
+                fs.Close();
+            }
+            catch { }
+            i++;
+        }
+        Update(false);
+        if(addOrder)
+        {
+            MoveCreateFolders();
+            SaveOrderInfo(userName, cellPhone);
+            Utils.SendEmail("Додано нове замовлення.", "Додано нове замовлення. Номер замовлення - " + OrderID, 
+                System.Configuration.ConfigurationManager.AppSettings["AddOrderEmail"].Trim());
+            Response.Redirect("Default.aspx?content=OrderAdded&OrderID=" + OrderID);
+            return;
+        }
+        rgdOrderPhoto.Rebind();
+        SetEditMode(true);
+    }
+
+    private void SaveOrderInfo(string userName, string cellPhone)
+    {
+        StreamWriter orderInfo = File.AppendText(Server.MapPath(Utils.PrintImagePath + "//" + OrderID + "//")
+                + "OrderInfo.txt");
+        Order o = new Order();
+        if (o.LoadByPrimaryKey(OrderID))
+        {
+            WriteLog("Номер Замовлення: " + OrderID, orderInfo);
+            WriteLog("Телефон: " + cellPhone, orderInfo);
+            if (userName.TrimEnd().Length > 0)
+            {
+                WriteLog("Прізвище: " + userName, orderInfo);
+            }
+        }
+        WriteLog("Примітки клієнта: " + tbClientNote.Text, orderInfo);
+        WriteLog("Дата замовлення: " + o.DateCreated.ToString("dd.MM.yyyy"), orderInfo);
+        WriteLog("Доставка: " + ddlDelivery.SelectedText, orderInfo);
+        if(!o.IsColumnNull(Order.ColumnNames.PhotoCount))
+        {
+            WriteLog("Кількість фото: " + o.s_PhotoCount, orderInfo);
+        }
+        if (!o.IsColumnNull(Order.ColumnNames.Amount))
+        {
+            WriteLog("Ціна: " + o.Amount.ToString("N") + " грн.", orderInfo);
+        }
+        orderInfo.Close();
+    }
+
+    private int OrderID
+    {
+        get
+        {
+            int orderID = 0;
+            if (this.ViewState["OrderID"] != null)
+            {
+                orderID = (int)this.ViewState["OrderID"];
+            }
+            return orderID;
+        }
+        set
+        {
+            this.ViewState["OrderID"] = value;
+        }
+    }
+
+    private void MoveCreateFolders()
+    {
+        string printFolder = Server.MapPath(Utils.PrintImagePath + "//" + OrderID);
+        string orderFolder = Server.MapPath(Utils.OrderImagePath + "//" + OrderID);
+        OrderPhoto op = new OrderPhoto();
+        op.Where.OrderID.Value = OrderID;
+        if(op.Query.Load())
+        {
+            do
+            {
+                string folderName = printFolder + "//" + PhotoFormat(op.MerchandiseID);
+                if(op.PaperTypeID == 1)
+                {
+                    folderName += "MAT";
+                }
+                else
+                {
+                    folderName += "GL";
+                }
+                if(op.Border)
+                {
+                    folderName += "_B";
+                }
+                if (!System.IO.Directory.Exists(folderName + "//"))
+                {
+                    System.IO.Directory.CreateDirectory(folderName + "//");
+                }
+                string sourceFileName = Path.Combine(orderFolder, op.s_PhotoName);
+                string destFileName = op.s_PhotoName;
+                if (op.Count > 1)
+                {
+                    string[] fileParts = op.s_PhotoName.Split('.');
+                    if(fileParts.Length == 2)
+                    {
+                        destFileName = "(" + op.Count + ")" + fileParts[0] + "." + fileParts[1];
+                    }
+                }
+                string desctFileName = Path.Combine(folderName, destFileName);
+                File.Move(sourceFileName, desctFileName);
+            } while (op.MoveNext());
+        }
+    }
+
+    private string PhotoFormat(int merchandiseID)
+    {
+        Merchandise m = new Merchandise();
+        if(m.LoadByPrimaryKey(merchandiseID))
+        {
+            return m.s_Name.Replace("см", "").Replace("cm", "");
+        }
+        return "";
+    }
+
+    private void rgdOrderPhoto_NeedDataSource(object source, Telerik.WebControls.GridNeedDataSourceEventArgs e)
+    {
+        this.rgdOrderPhoto.DataSource = LoadOrderPhoto();
+    }
+
+    private DataSet LoadOrderPhoto()
+    {
+        DataSet ds = new DataSet();
+        OrderPhoto op = new OrderPhoto();
+        op.LoadByOrderID(OrderID);
+        op.DefaultView.Table.TableName = "OrderPhoto";
+        if(op.DefaultView.Table.Rows.Count > 0)
+        {
+            rgdOrderPhoto.MasterTableView.ShowFooter = true;
+        }
+        else
+        {
+            rgdOrderPhoto.MasterTableView.ShowFooter = false;
+        }
+        ds.Tables.Add(op.DefaultView.Table);
+
+        PaperType pt = new PaperType();
+        if (pt.LoadAll())
+        {
+            pt.DefaultView.Table.TableName = "PaperType";
+            ds.Tables.Add(pt.DefaultView.Table);
+        }
+
+        Merchandise m = new Merchandise();
+        m.Where.CategoryID.Value = CategoryID;
+        if (m.Query.Load())
+        {
+            m.DefaultView.Table.TableName = "PhotoFormat";
+            ds.Tables.Add(m.DefaultView.Table);
+        }
+        return ds;
+    }
+
+    private void SetEditMode(bool setEditMode)
+    {
+        TableRowCollection rows = (rgdOrderPhoto.MasterTableView.Controls[0] as Table).Rows;
+        foreach (Telerik.WebControls.GridItem row in rows)
+        {
+            row.Edit = setEditMode;
+        }
+        rgdOrderPhoto.Rebind();
+    }
+
+    private void Update(bool deleteChecked)
+    {
+        TableRowCollection rows = (rgdOrderPhoto.MasterTableView.Controls[0] as Table).Rows;
+        foreach (Telerik.WebControls.GridItem item in rows)
+        {
+            if (item.Edit)
+            {
+                Telerik.WebControls.GridEditableItem editedItem = item as Telerik.WebControls.GridEditableItem;
+                TextBox tb = (TextBox)editedItem["OrderPhotoID"].Controls[0];
+                int orderPhotoID = int.Parse(tb.Text);
+                CheckBox chkDeleteRow = (CheckBox)item.FindControl("chkDeleteRow");
+                if (chkDeleteRow != null && chkDeleteRow.Checked && deleteChecked)
+                {
+                    DeleteItem(orderPhotoID);
+                }
+                else
+                {
+                    OrderPhoto op = new OrderPhoto();
+                    if (op.LoadByPrimaryKey(orderPhotoID))
+                    {
+                        UpdateEntity(op, item);
+                    }
+                }
+            }
+        }
+        //rgdOrderPhoto.Rebind();
+    }
+
+    private void UpdateEntity(SqlClientEntity entity, Telerik.WebControls.GridItem item)
+    {
+        try
+        {
+            Telerik.WebControls.GridEditableItem editedItem = item as Telerik.WebControls.GridEditableItem;
+            //Update new values
+            Hashtable newValues = new Hashtable();
+            //The GridTableView will fill the values from all editable columns in the hash
+            item.OwnerTableView.ExtractValuesFromItem(newValues, editedItem);
+            foreach (DictionaryEntry entry in newValues)
+            {
+                string key = (string) entry.Key;
+                if(key == "PhotoCount")
+                {
+                    key = "Count";
+                }
+                if (entry.Value == null)
+                {
+                    entity.SetColumnNull(key);
+                }
+                else
+                {
+                    entity.SetColumn(key, entry.Value);
+                }
+            }
+            entity.Save();
+        }
+        catch
+        {
+        }
+    }
+
+    private void rgdOrderPhoto_ItemCommand(object source, Telerik.WebControls.GridCommandEventArgs e)
+    {
+        if (e.CommandName == "DeleteSelected")
+        {
+            Update(true);
+            e.Item.OwnerTableView.Rebind();
+            return;
+        }
+    }
+
+    private void DeleteItem(int orderPhotoID)
+    {
+        OrderPhoto op = new OrderPhoto();
+        if (op.LoadByPrimaryKey(orderPhotoID))
+        {
+            string orderFolder = Server.MapPath(Utils.OrderImagePath + "//" + OrderID);
+            string extension = "";
+            string photoName = op.PhotoName;
+            if (photoName.LastIndexOf('.') != -1)
+            {
+                extension = photoName.Substring(photoName.LastIndexOf('.'),
+                    (photoName.Length - photoName.LastIndexOf('.')));
+                photoName = photoName.Substring(0, photoName.LastIndexOf('.'));
+            }
+            Utils.DeleteFile(orderFolder, op.PhotoName);
+            Utils.DeleteFile(orderFolder, photoName + "_s" + extension);
+            Utils.DeleteFile(orderFolder, photoName + "_m" + extension);
+            op.DeleteAll();
+            op.Save();
+        }
+    }
+
+    protected override void SetEventHandlers()
+    {
+        this.rgdOrderPhoto.NeedDataSource +=
+            new Telerik.WebControls.GridNeedDataSourceEventHandler(this.rgdOrderPhoto_NeedDataSource);
+        this.rgdOrderPhoto.ItemCommand +=
+            new Telerik.WebControls.GridCommandEventHandler(this.rgdOrderPhoto_ItemCommand);
+        base.SetEventHandlers();
+    }
+
+    protected override void OnInit(EventArgs e)
+    {
+        if (!Utils.IsPagePostBack(this))
+        {
+            rgdOrderPhoto.MasterTableView.SortExpressions.AddSortExpression("OrderPhotoID DESC");
+        }
+        this.rgdOrderPhoto.ClientSettings.ClientEvents.OnGridCreated = "GetOrderPhotoGridObject";
+        base.OnInit(e);
+    }
+
+    public string GetUpdateCancelButtonStyle()
+    {
+        if (this.rgdOrderPhoto.EditIndexes.Count > 0)
+        {
+            return "";
+        }
+        return "VIKKI_HiddenButton";
+    }
+
+    public string GetAddDeleteButtonStyle()
+    {
+        if (this.rgdOrderPhoto.EditIndexes.Count > 0)
+        {
+            return "VIKKI_HiddenButton";
+        }
+        return "";
+    }
+
+    protected void rgdOrderPhoto_ItemDataBound(object sender, Telerik.WebControls.GridItemEventArgs e)
+    {
+        if (e.Item is Telerik.WebControls.GridHeaderItem)
+        {
+            CheckBox chkDeleteAll = (CheckBox)e.Item.FindControl("chkDeleteAll");
+            if (chkDeleteAll != null)
+            {
+                chkDeleteAll.Attributes["onclick"] = "VIKKI_OrderPhotoCheckAllCheckboxes(event);";
+            }
+        }
+        if (e.Item is Telerik.WebControls.GridDataItem)
+        {
+            DataRowView dataRowView = e.Item.DataItem as DataRowView;
+            if (dataRowView != null)
+            {
+                //Load Image
+                Image i = new Image();
+                string orderImagePath = Utils.OrderImagePath + "//" + OrderID;
+                string photoName = dataRowView["PhotoName"].ToString();
+                string extension = "";
+                if (photoName.LastIndexOf('.') != -1)
+                {
+                    extension = photoName.Substring(photoName.LastIndexOf('.'),
+                        (photoName.Length - photoName.LastIndexOf('.')));
+                    photoName = photoName.Substring(0, photoName.LastIndexOf('.'));
+                }
+
+                i.ImageUrl = Path.Combine(orderImagePath, photoName + "_s" + extension);
+                i.Attributes["onclick"] = "return VIKKI_ShowImageViewWindow('0', '"
+                    + photoName + "_m" + extension + "', '" + OrderID.ToString() + "');";
+                i.CssClass = "VIKKI_HandCursor";
+                i.ToolTip = dataRowView["ClientPhotoName"].ToString();
+                e.Item.Cells[3].Text = "";
+                e.Item.Cells[3].Controls.Add(i);
+            }
+        }
+        if (e.Item is Telerik.WebControls.GridFooterItem)
+        {
+            if (OrderID > 0)
+            {
+                Order o = new Order();
+                if (o.LoadByPrimaryKey(OrderID))
+                {
+                    if (!o.IsColumnNull(Order.ColumnNames.Amount))
+                    {
+                        e.Item.Cells[7].Text = o.Amount.ToString("0.00") + " " + Resources.Fotoxata.Grn;
+                    }
+                    if (!o.IsColumnNull(Order.ColumnNames.PhotoCount))
+                    {
+                        e.Item.Cells[4].Text = o.PhotoCount.ToString();
+                    }
+                }
+            }
+        }
+    }
+
+    private int CategoryID
+    {
+        get
+        {
+            if (Request.Params["CategoryID"] != null)
+            {
+                return int.Parse(Request.Params["CategoryID"]);
+            }
+            return 0;
+        }
+    }
+
+    protected void rgdOrderPhoto_CreateColumnEditor(object sender, Telerik.WebControls.GridCreateColumnEditorEventArgs e)
+    {
+        switch (e.Column.UniqueName)
+        {
+            case "PaperTypeID":
+            case "MerchandiseID":
+                InLineEditComboBoxEditor comboEditor = new InLineEditComboBoxEditor();
+                comboEditor.ComboID = e.Column.UniqueName;
+                comboEditor.OnClientSelectedIndexChanged = "VIKKI_CalculateTotalAmounts";
+                e.ColumnEditor = comboEditor;
+                break;
+            case "PhotoCount":
+                InLineEditInputEditor numTextBox = new InLineEditInputEditor();
+                numTextBox.OnClientValueChanged = "VIKKI_CalculateTotalAmounts";
+                e.ColumnEditor = numTextBox;
+                break;
+        }
+    }
+
+    protected void btnAddPhoto_Click(object sender, EventArgs e)
+    {
+        AddOrder(false);
+    }
+
+    private void LoadTitle()
+    {
+        Category c = new Category();
+        if (c.LoadByPrimaryKey(CategoryID))
+        {
+            string title = "";
+            if (!c.IsColumnNull("Title" + Utils.LangPrefix))
+            {
+                title = c.GetColumn("Title" + Utils.LangPrefix).ToString();
+            }
+            if (title.Trim() == "")
+            {
+                title = c.GetColumn("Name" + Utils.LangPrefix).ToString();
+            }
+            this.m_Name = title;
+        }
+    }
+
+    public string AtFirstUploadPhoto
+    {
+        get
+        {
+            return Resources.Fotoxata.AtFirstUploadPhoto;
+        }
+    }
+
+    public string MobilePhoneRequire
+    {
+        get
+        {
+            return Resources.Fotoxata.MobilePhoneRequire;
+        }
+    }
+
+    public string ImageFormatAlert
+    {
+        get
+        {
+            return Resources.Fotoxata.ImageFormatAlert;
+        }
+    }
+
+    public string MaxImageSizeAlert
+    {
+        get
+        {
+            return Resources.Fotoxata.MaxImageSizeAlert;
+        }
+    }
+
+    public string WaitCompleteUploadingAlert
+    {
+        get
+        {
+            return Resources.Fotoxata.WaitCompleteUploadingAlert;
+        }
+    }
+
+    public string Total
+    {
+        get
+        {
+            return Resources.Fotoxata.Total;
+        }
+    }
+
+    public string Grn
+    {
+        get
+        {
+            return Resources.Fotoxata.Grn;
+        }
+    }
+
+    public string DeleteSelectedRow
+    {
+        get
+        {
+            return Resources.Fotoxata.DeleteSelectedRow;
+        }
+    }
+
+    public string DeleteAlert
+    {
+        get
+        {
+            return Resources.Fotoxata.DeleteAlert;
+        }
+    }
+
+    public string Refresh
+    {
+        get
+        {
+            return Resources.Fotoxata.Refresh;
+        }
+    }
+
+    private void WriteLog(string message, StreamWriter log)
+    {
+        log.WriteLine(message);
+        log.Flush();
+    }
+}

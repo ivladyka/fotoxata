@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Advices" xml:space="preserve">
+    <value>Поради</value>
+  </data>
+  <data name="BackAdviceList" xml:space="preserve">
+    <value>Повернутися до списку порад</value>
+  </data>
+  <data name="BackNewsList" xml:space="preserve">
+    <value>Повернутися до списку новин</value>
+  </data>
+  <data name="Border" xml:space="preserve">
+    <value>Рамка</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Відміна</value>
+  </data>
+  <data name="ClientNote" xml:space="preserve">
+    <value>Примітка Клієнта</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакти</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Всі права застережено. Створення сайту</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>Вартість, грн.</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="DeleteSelectedRow" xml:space="preserve">
+    <value>Видалити Виділений Запис</value>
+  </data>
+  <data name="Delivery" xml:space="preserve">
+    <value>Доставка</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Eng</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>Формат</value>
+  </data>
+  <data name="ForOrderPrint" xml:space="preserve">
+    <value>Для замовлення друку заповніть форму</value>
+  </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>ГАЛЕРЕЯ</value>
+  </data>
+  <data name="Grn" xml:space="preserve">
+    <value>грн.</value>
+  </data>
+  <data name="InternetPrint" xml:space="preserve">
+    <value>ДРУК ЧЕРЕЗ ІНТЕРНЕТ</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>ВХІД</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>ВИХІД</value>
+  </data>
+  <data name="MobilePhone" xml:space="preserve">
+    <value>Мобільний телефон</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>Детальніше</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>МІЙ ПРОФАЙЛ</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Новини</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Примітка</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Кількість</value>
+  </data>
+  <data name="OnlineFotoxata" xml:space="preserve">
+    <value>FOTOXATA ON-LINE</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Замовлення</value>
+  </data>
+  <data name="OrderDate" xml:space="preserve">
+    <value>Дата замовлення</value>
+  </data>
+  <data name="OrderStatus" xml:space="preserve">
+    <value>Cтатус замовлення</value>
+  </data>
+  <data name="OrderView" xml:space="preserve">
+    <value>Перегляд замовлення</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>Папір</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <data name="PhotoCount" xml:space="preserve">
+    <value>Кількість фото</value>
+  </data>
+  <data name="PhotoNotice" xml:space="preserve">
+    <value>Примітка працівників фотосалону</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Прайс</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Поновити</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>РЕЄСТРАЦІЯ</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="Russian" xml:space="preserve">
+    <value>Рус</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Вибрати</value>
+  </data>
+  <data name="SelectImages" xml:space="preserve">
+    <value>Виберіть зображення для завантаження (jpg, bmp i tiff)</value>
+  </data>
+  <data name="ServiceName" xml:space="preserve">
+    <value>Найменування послуги</value>
+  </data>
+  <data name="SiteMap" xml:space="preserve">
+    <value>КАРТА САЙТУ</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Розмір</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Сортувати</value>
+  </data>
+  <data name="SortedASC" xml:space="preserve">
+    <value>Відсортовано по зростанню</value>
+  </data>
+  <data name="SortedDESC" xml:space="preserve">
+    <value>Відсортовано по спаданню</value>
+  </data>
+  <data name="Surname" xml:space="preserve">
+    <value>Прізвище</value>
+  </data>
+  <data name="Ukrainian" xml:space="preserve">
+    <value>Укр</value>
+  </data>
+  <data name="UploatPhoto" xml:space="preserve">
+    <value>Завантажити фото для друку</value>
+  </data>
+  <data name="AddedPhotos" xml:space="preserve">
+    <value>Додані фото</value>
+  </data>
+  <data name="AddPhoto" xml:space="preserve">
+    <value>Додати фото</value>
+  </data>
+  <data name="AtFirstUploadPhoto" xml:space="preserve">
+    <value>Спочатку завантажте фото для друку.</value>
+  </data>
+  <data name="ImageFormatAlert" xml:space="preserve">
+    <value>Тільки файли з розширенням jpg, bmp i tiff можуть бути завантажені на сервер. Будь ласка видаліть файли з іншими розширеннями.</value>
+  </data>
+  <data name="MaxImageSizeAlert" xml:space="preserve">
+    <value>Максимальний розмір файла 100Мб. Допустимі формати зображень jpg, bmp i tiff. Будь ласка видаліть файли помічені знаком оклику.</value>
+  </data>
+  <data name="MobilePhoneRequire" xml:space="preserve">
+    <value>Мобільний телефон - обов'язкове поле.</value>
+  </data>
+  <data name="NameField" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NoRecords" xml:space="preserve">
+    <value>Записи відсутні</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Cума: &amp;nbsp;</value>
+  </data>
+  <data name="WaitCompleteUploadingAlert" xml:space="preserve">
+    <value>Будь ласка дочекайтесь завантаження всіх файлів.</value>
+  </data>
+  <data name="DeleteAlert" xml:space="preserve">
+    <value>Ви дійсно бажаєте видалити виділені записи ?</value>
+  </data>
+  <data name="EmailIncorrect" xml:space="preserve">
+    <value>&lt;br&gt; Введіть коректний E-mail адрес.</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Ім`я</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Забули пароль?</value>
+  </data>
+  <data name="ForgotPasswordAlert" xml:space="preserve">
+    <value>Логін введений неправильно або E-mail адрес для цього користувача не існує.</value>
+  </data>
+  <data name="ForgotPasswordMessage" xml:space="preserve">
+    <value>Будь ласка, введіть номер вашого мобільного телефону, щоб розпочати процес відновлення паролю. 
+        &lt;br /&gt;Пароль буде послано на ваш E-mail.</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>з</value>
+  </data>
+  <data name="Goldyrev" xml:space="preserve">
+    <value>ФОП Голдирєв В.В.</value>
+  </data>
+  <data name="LoginIsIncorrect" xml:space="preserve">
+    <value>Логін або пароль введені неправильно</value>
+  </data>
+  <data name="LogInSystem" xml:space="preserve">
+    <value>Вхід в систему</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Сторінка</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="PasswordConfirm" xml:space="preserve">
+    <value>Підтвердіть пароль</value>
+  </data>
+  <data name="PasswordEmailSubj" xml:space="preserve">
+    <value>Пароль для Фотохати</value>
+  </data>
+  <data name="PasswordNotEqual" xml:space="preserve">
+    <value>&lt;br&gt;Паролі не рівні. Спробуйте ввести паролі ще раз.</value>
+  </data>
+  <data name="PasswordSent" xml:space="preserve">
+    <value>Пароль посланий на ваш E-mail.</value>
+  </data>
+  <data name="PhoneAbbr" xml:space="preserve">
+    <value>т</value>
+  </data>
+  <data name="PhotoAddress" xml:space="preserve">
+    <value>м.Львів, вул.Сихівська, 11</value>
+  </data>
+  <data name="PriceList" xml:space="preserve">
+    <value>Прейскурант</value>
+  </data>
+  <data name="PriceOnPrint" xml:space="preserve">
+    <value>Ціни на друк</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>обов'язкове поле.</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Надіслати</value>
+  </data>
+  <data name="StayLogged" xml:space="preserve">
+    <value>Залишатися в системі</value>
+  </data>
+  <data name="YourPassword" xml:space="preserve">
+    <value>Ваш пароль</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Широкий спектр фотопослуг. Друк цифрових фото, друк з плівки. Фото на документи, виїзне фото, художнє фото, дитяче фото, весільне фото. Фото сувеніри. Друк фото через інтернет. Сканування фотоплівок.</value>
+  </data>
+  <data name="MetaKeywords" xml:space="preserve">
+    <value>Фотохата, фотосалон, Львів, широкий спектр фотопослуг, друк цифрових фото, друк з плівки, фото на документи, виїзне фото, художнє фото, дитяче фото, весільне фото, фото сувеніри, друк фото через інтернет, сканування фотоплівок, фотопослуги, Голдирєв, VIKKI Soft</value>
+  </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Фотохата</value>
+  </data>
+  <data name="Agreement" xml:space="preserve">
+    <value>Я згоден з &lt;a href="Default.aspx?content=CategoryView&amp;CategoryID=84" target="_blank"&gt;політикою конфіденційності&lt;/a&gt; та даю згоду на обробку своїх персональних даних та підтверджую, що мені виповнилось 18 років.</value>
+  </data>
+</root>

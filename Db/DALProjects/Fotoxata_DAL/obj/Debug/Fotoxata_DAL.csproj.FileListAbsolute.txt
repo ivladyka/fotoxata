@@ -1,0 +1,28 @@
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\Fotoxata_DAL.dll
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\Fotoxata_DAL.pdb
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\Fotoxata_DAL.dll
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\Fotoxata_DAL.pdb
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\MyGeneration.dOOdads.dll
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\MyGeneration.dOOdads.pdb
+E:\Projects\Vikki Soft\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\Fotoxata_DAL.dll
+E:\Projects\Vikki Soft\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\Fotoxata_DAL.pdb
+E:\Projects\Vikki Soft\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\MyGeneration.dOOdads.dll
+E:\Projects\Vikki Soft\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\MyGeneration.dOOdads.pdb
+E:\Projects\Vikki Soft\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\ResolveAssemblyReference.cache
+E:\Projects\Vikki Soft\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\Fotoxata_DAL.dll
+E:\Projects\Vikki Soft\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\Fotoxata_DAL.pdb
+D:\project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\Fotoxata_DAL.dll
+D:\project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\Fotoxata_DAL.pdb
+D:\project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\MyGeneration.dOOdads.dll
+D:\project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\MyGeneration.dOOdads.pdb
+D:\project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\ResolveAssemblyReference.cache
+D:\project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\Fotoxata_DAL.dll
+D:\project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\Fotoxata_DAL.pdb
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\Fotoxata_DAL.dll
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\Fotoxata_DAL.pdb
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\MyGeneration.dOOdads.dll
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Debug\MyGeneration.dOOdads.pdb
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\Fotoxata_DAL.csprojResolveAssemblyReference.cache
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\Fotoxata_DAL.dll
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Debug\Fotoxata_DAL.pdb

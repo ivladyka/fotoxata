@@ -1,0 +1,193 @@
+﻿body
+{
+color:#a1a1a1 !important;
+}
+p 
+{
+ margin:0px;
+ padding:0px;
+ text-indent: 20px; /* Отступ первой строки в пикселах */
+ color:#a1a1a1;
+}
+
+table 
+{
+	font-size: 9pt;	
+}
+
+
+
+.tableStyle
+{  
+	width: 1000px;
+	height: 100%;
+	margin: 0px;
+	text-align: center;
+}
+
+.headerStyle
+{
+height:155px;
+ padding:0px;
+ }
+
+
+ .tab
+ {
+ 	background-image:url(Images/tabbg.gif);
+ 	background-repeat:no-repeat;
+ 	background-position: right bottom;
+ }
+ .headerMenu
+ { float:right;
+   height:180px;
+   width:100%;
+   color:#ffffff;
+   font-size:10pt;   
+}
+.Small
+{
+font-size:6pt;
+}
+
+
+ 
+TABLE.EditControl
+{
+	border:solid 1px #6693a8;
+   padding :20px;
+   height:auto;
+	background-color: #e2eff5;
+	color:#223845;
+	font-weight:bold;
+	font-size:10pt;
+	vertical-align:top;
+	float:left;	
+}
+.EditUDText
+{
+	width:100%; 
+	vertical-align:top;  
+	text-align:left; 
+	font-size: 10pt; 
+	font-weight:bold;
+}
+.FontSmall
+{
+ margin:0px;
+ padding-top:0px;
+}
+
+.VIKKI_HandCursor
+{
+    CURSOR: pointer;
+}
+
+#hoverNav{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 95%;
+	width: 98%;
+	z-index: 10;
+}
+#hoverNav a{ outline: none;}
+
+
+.VIKKI_PrevImageLink
+{
+	width: 49%;
+	height: 98%;
+	background: transparent url(Images/blank.gif) no-repeat; /* Trick IE into showing hover */
+	display: block;
+	z-index: 1000;
+	left: 0; 
+	float: left;
+}
+
+.VIKKI_NextImageLink
+{
+	width: 49%;
+	height: 98%;
+	background: transparent url(Images/blank.gif) no-repeat; /* Trick IE into showing hover */
+	display: block;
+	z-index: 1000;
+	right: 0; 
+	float: right; 
+}
+
+.VIKKI_PrevImageLink:hover {
+	 background: url(Images/prevlabel.gif) left 15% no-repeat;
+}
+
+.VIKKI_PrevImageLink:visited:hover {
+	 background: url(Images/prevlabel.gif) left 15% no-repeat;
+}
+
+.VIKKI_NextImageLink:hover {
+	 background: url(Images/nextlabel.gif) right 15% no-repeat;
+}
+
+.VIKKI_NextImageLink:visited:hover {
+	 background: url(Images/nextlabel.gif) right 15% no-repeat;
+}
+
+.VIKKI_ImageBackground
+{
+	background-color: White;
+}
+
+.VIKKI_HiddenButton
+{
+	visibility: hidden;
+	display: none;
+	position: absolute;
+	left: -100px;
+}
+
+.vikki_digitalprinting
+{
+	position:absolute;	
+	vertical-align: top;
+	z-index: 1000;
+	top:-354px;
+	left:428px;
+	float:right;
+	vertical-align:top;
+}
+
+.VIKKI_WhiteBackround
+{
+	background:White none repeat scroll 0 0;
+	color:Black;
+}
+.treeImage
+{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #ed1c24;
+    border-left-style: none;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #ed1c24;
+}
+
+.VIKKI_Gallery_Thumbnail_Wrapper
+{
+    overflow: hidden;
+    position:relative;
+    display: block;
+    border: 1px solid White;
+    height: 106px;
+    margin:0px;
+    padding:0px;
+}
+
+.VIKKI_Gallery_Thumbnail_Content
+{
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+

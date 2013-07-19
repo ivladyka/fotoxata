@@ -1,0 +1,6 @@
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Release\Fotoxata_DAL.dll
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Release\Fotoxata_DAL.pdb
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Release\MyGeneration.dOOdads.dll
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Release\ResolveAssemblyReference.cache
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Release\Fotoxata_DAL.dll
+C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Release\Fotoxata_DAL.pdb

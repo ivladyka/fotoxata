@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="~/Office/Office.aspx" title="ON-LINE - Фотохата"  description="ON-LINE - Фотохата" >
+      <siteMapNode url="~/Office/Office.aspx?content=UserList" title="КОРИСТУВАЧІ"  description="КОРИСТУВАЧІ" >
+        <siteMapNode url="~/Office/Office.aspx?content=UserEdit" title="РЕДАГУВАТИ КОРИСТУВАЧА"  description="РЕДАГУВАТИ КОРИСТУВАЧА" />
+      </siteMapNode> 
+      <siteMapNode url="~/Office/Office.aspx?content=PhotoSalonList" title="ФОТОСАЛОНИ"  description="ФОТОСАЛОНИ">
+        <siteMapNode url="~/Office/Office.aspx?content=PhotoSalonEdit" title="РЕДАГУВАТИ ФОТОСАЛОН"  description="РЕДАГУВАТИ ФОТОСАЛОН" />
+      </siteMapNode>
+      <siteMapNode url="~/Office/Office.aspx?content=OrderDashboard" title="ЗАМОВЛЕННЯ"  description="ЗАМОВЛЕННЯ" >
+        <siteMapNode url="~/Office/Office.aspx?content=OrderList" title="ЗАМОВЛЕННЯ"  description="ЗАМОВЛЕННЯ">
+        </siteMapNode>
+        <siteMapNode url="~/Office/Office.aspx?content=OrderEdit" title="РЕДАГУВАТИ ЗАМОВЛЕННЯ"  description="РЕДАГУВАТИ ЗАМОВЛЕННЯ" />
+      </siteMapNode>
+      <siteMapNode url="~/Office/Office.aspx?content=CategoryList" title="КАТЕГОРІЇ"  description="КАТЕГОРІЇ" >
+        <siteMapNode url="~/Office/Office.aspx?content=CategoryEdit" title="РЕДАГУВАТИ КАТЕГОРІЮ"  description="РЕДАГУВАТИ КАТЕГОРІЮ" />
+      </siteMapNode>
+      <siteMapNode url="~/Office/Office.aspx?content=AdviceList" title="ПОРАДИ"  description="ПОРАДИ" >
+         <siteMapNode url="~/Office/Office.aspx?content=AdviceEdit" title="РЕДАГУВАТИ ПОРАДУ"  description="РЕДАГУВАТИ ПОРАДУ" />
+      </siteMapNode>
+      <siteMapNode url="~/Office/Office.aspx?content=DeliveryList" title="ДОСТАВКА"  description="ДОСТАВКА" >
+        <siteMapNode url="~/Office/Office.aspx?content=DeliveryEdit" title="РЕДАГУВАТИ ДОСТАВКУ"  description="РЕДАГУВАТИ ДОСТАВКУ" />
+    </siteMapNode>
+      <siteMapNode url="~/Office/Office.aspx?content=NewsList" title="НОВИНИ"  description="НОВИНИ" >
+        <siteMapNode url="~/Office/Office.aspx?content=NewsEdit" title="РЕДАГУВАТИ НОВИНУ"  description="РЕДАГУВАТИ НОВИНУ" />
+      </siteMapNode>
+      <siteMapNode url="~/Office/Office.aspx?content=ScheduleList" title="ПЛАНУВАННЯ"  description="ПЛАНУВАННЯ">
+        <siteMapNode url="~/Office/Office.aspx?content=Schedule" title="ПЛАНУВАННЯ"  description="ПЛАНУВАННЯ" />
+      </siteMapNode>
+      <siteMapNode url="~/Office/Office.aspx?content=OrderStatusList" title="СТАТУС ЗАМОВЛЕННЯ"  description="СТАТУС ЗАМОВЛЕННЯ" >
+        <siteMapNode url="~/Office/Office.aspx?content=OrderStatusEdit" title="РЕДАГУВАТИ СТАТУС ЗАМОВЛЕННЯ"  description="РЕДАГУВАТИ СТАТУС ЗАМОВЛЕННЯ" />
+      </siteMapNode>
+    </siteMapNode>
+</siteMap>

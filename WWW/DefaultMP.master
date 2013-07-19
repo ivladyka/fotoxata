@@ -1,0 +1,134 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="DefaultMP.master.cs" Inherits="DefaultMP" %>
+<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
+<%@ Register TagPrefix="uc1" TagName="TopMenu" Src="Controls/TopMenu.ascx" %>
+<%@ Register TagPrefix="uc1" TagName="FooterMenu" Src="Controls/FooterMenu.ascx" %>
+<%@ Register TagPrefix="uc1" TagName="SiteMapMenu" Src="Controls/SiteMapMenu.ascx" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="~/style_global.css" type="text/css" rel="stylesheet"/>
+    <link href="~/style.css" type="text/css" rel="stylesheet"/>
+    <script src="Scripts.js" type="text/javascript"></script>
+    <script src="jquery.js" type="text/javascript"></script>
+    <script src="galleria/galleria-1.2.6.min.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="~/Images/puzzle.gif" />
+    <meta content="VIKKI Soft, office@vikkisoft.com" name="VIKKIsoft" />
+    <meta name="ROBOTS" content="index, follow" />
+    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+    <%=MetaDescription %>
+    <%=MetaKeywords%>
+    </telerik:RadCodeBlock>
+    <meta name="Revisit-after" content="3 days" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body  onload="VIKKI_LoadDefaultPage();" alink="#d70000" vlink="#a1a1a1" link="#a1a1a1">
+<form id="form1" runat="server" class="formStyle" > 
+
+<div class="Divstyle1" align="center">
+<div class="DivHeader1">
+ <div  class="DivTopHeader">
+ <div class="Logodiv">
+     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Default.aspx" ImageUrl="NewImages/logo.gif" Text="Фотохата" BorderStyle="None"></asp:HyperLink>
+     </div>
+<div style=" float:right; height:40px; margin-right: 40px;">
+    
+<div class="exitbutton" >
+       <asp:HyperLink ID="hpLogIn" runat="server" CssClass="Headerlink" NavigateUrl="~/Login.aspx" Text="<%$Resources:Fotoxata, LogIn %>"></asp:HyperLink>
+       <asp:HyperLink ID="hpLogOut" runat="server" CssClass="Headerlink" NavigateUrl="~/LogOff.aspx" Text="<%$Resources:Fotoxata, LogOut %>"></asp:HyperLink>
+  </div>
+  <div class="loginbutton">
+          <asp:HyperLink ID="hlOfficeRegistration" runat="server" CssClass="Headerlink" NavigateUrl="~/Office/Office.aspx?content=ProfileEdit" Visible="false" Text="<%$Resources:Fotoxata, Registration %>"></asp:HyperLink>
+          <asp:HyperLink ID="hlOfficeProfile" runat="server"  CssClass="Headerlink" NavigateUrl="~/Office/Office.aspx?content=ProfileEdit" Visible="false" Text="<%$Resources:Fotoxata, MyProfile %>"></asp:HyperLink>
+  </div>
+<div class="OfficeOnlinebutton">  
+<div id="imgOfficeVisitEmpty">
+</div>
+ <div id="imgOfficeOnline">
+ <asp:HyperLink ID="hlOfficeOnline" runat="server" NavigateUrl="~/Office/Office.aspx" Text="<%$Resources:Fotoxata, OnlineFotoxata %>" Visible="false"  CssClass="Headerlink"></asp:HyperLink>
+ </div>
+ </div>
+ <div align="center" class="PrintPhotoInternetButton">
+    <asp:HyperLink ID="hlPrintPhotoInternet" runat="server" CssClass="whitelink" NavigateUrl="~/Default.aspx?content=OrderAdd&CategoryID=9" Text="<%$Resources:Fotoxata, InternetPrint %>"></asp:HyperLink>
+  </div>
+  <div class="languages" id="languages">
+            <asp:LinkButton ID="hlUkrainianLang" BorderWidth="0px" runat="server" Text="<%$Resources:Fotoxata, Ukrainian %>" ToolTip="<%$Resources:Fotoxata, Ukrainian %>" 
+            OnClientClick="VIKKI_ChangeLanguage('uk-UA');" OnClick="hlLanguage_Click">
+            </asp:LinkButton> | 
+            <asp:LinkButton id="hlEnglishLang" BorderWidth="0px" runat="server" ToolTip="<%$Resources:Fotoxata, English %>" Text="<%$Resources:Fotoxata, English %>"
+            OnClientClick="VIKKI_ChangeLanguage('en-US');" OnClick="hlLanguage_Click">
+             </asp:LinkButton> | 
+            <asp:LinkButton ID="hlRussianLang" BorderWidth="0px" runat="server" ToolTip="<%$Resources:Fotoxata, Russian %>" Text="<%$Resources:Fotoxata, Russian %>"
+            OnClientClick="VIKKI_ChangeLanguage('ru-RU');" OnClick="hlLanguage_Click">
+            </asp:LinkButton>
+        </div>
+</div>
+<div class="Topmenustyle">
+<div style="width: 750px; height: 52px;"></div>
+<uc1:TopMenu id="TopMenu" runat="server"></uc1:TopMenu>
+<div align="left" class="SiteMapMenustyle">
+<uc1:SiteMapMenu id="SiteMapMenu1" runat="server"></uc1:SiteMapMenu>
+<asp:Panel ID="pnlOfficeMenu" runat="server">
+<asp:SiteMapDataSource ID="SiteMapDataSource1" Runat="server" SiteMapProvider="OfficeMenuMap" ShowStartingNode="true" />
+ <asp:SiteMapPath ID="SiteMapPath1" Runat="server" Font-Size="7pt" 
+    SiteMapProvider="OfficeMenuMap" PathDirection="RootToCurrent" 
+    ParentLevelsDisplayed="3" PathSeparator="" Font-Underline="false" RenderCurrentNodeAsLink="true"> 
+     <PathSeparatorStyle CssClass="PathSeparator" Height="15" Width="15" Font-Underline="false"/>
+     <CurrentNodeStyle ForeColor="#a1a1a1"  Font-Names="GOTHIC1" Font-Underline="false"/>
+     <NodeStyle  Font-Names="GOTHIC1" Font-Underline="false"  CssClass="activeNodeStyle"/>
+     <RootNodeStyle  ForeColor="#a1a1a1"  Font-Names="GOTHIC1" />
+  </asp:SiteMapPath>
+</asp:Panel></div>
+
+</div>
+
+</div>
+</div> 
+<div style="width: 1000px; top: 0px;"  >
+    <telerik:RadScriptManager runat="Server" ID="RadScriptManager1" />
+   
+            <div> 
+                    </div> 
+                 <table valign="top" border="0" width="100%"  cellspacing="0" cellpadding="0" >
+                 <tr>
+                 <td class="PageNameStyle">
+                 <asp:Label ID="lbPageName" runat="server" Text="" CssClass="pageName"></asp:Label>
+                 </td>
+                 </tr>
+                 <tr id="trWithoutScroll" runat="server">
+                    <td><div align="left">
+                        <asp:ContentPlaceHolder id="cphWithoutScroll" runat="server">        
+                            </asp:ContentPlaceHolder></div>
+                    </td>
+                 </tr>
+                 </table>
+ </div>
+ <div style="padding-top: 40px; width: 1000px;">
+ <uc1:FooterMenu id="FooterMenu" runat="server"></uc1:FooterMenu>
+ <div style="margin-bottom: 40px; margin-top: 0px; "><a style="color: White; cursor:default;" href="http://www.yourtravel.biz" target="_blank">Your Travel</a><%=Copyright%>  
+ <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="http://www.vikkisoft.com/">
+ <img id="imgvikkisoft" runat="server" class="VIKKI_HandCursor" src="~/Images/vikkisoft.gif" style="border-width:0px;"  title="VIKKI Soft" />
+ </asp:HyperLink> 2012<a style="color: White; cursor:default;" href="http://www.yourtravel.biz" target="_blank">Your Travel</a>
+ </div>
+ </div>
+  </div>
+  <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-37978086-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+          var ga = document.createElement('script'); ga.type =
+'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+
+</script>
+ </form>   
+ </body>   
+</html>

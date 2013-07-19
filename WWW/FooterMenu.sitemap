@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode >
+  <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=70" title="ПРО НАС"  description="ПРО НАС" />
+  <siteMapNode url="~/Default.aspx?content=GalleryTableList" title="ГАЛЕРЕЯ"  description="ГАЛЕРЕЯ"/>
+  <siteMapNode url="~/Default.aspx?content=TreeView&#038;CategoryID=75" title="ПОСЛУГИ"  description="ПОСЛУГИ"  />
+  <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=6" title="ФОТОТОВАРИ"  description="ФОТОТОВАРИ"/>
+  <siteMapNode url="~/Default.aspx?content=TreeView&#038;CategoryID=79" title="СУВЕНІРИ"  description="СУВЕНІРИ"/>
+  <siteMapNode url="~/Default.aspx?content=NewsLinkList" title="НОВИНИ"  description="НОВИНИ"/>
+  <siteMapNode url="~/Default.aspx?pricePDF=true" title="ПРАЙС"  description="ПРАЙС"/>
+  <siteMapNode url="~/Default.aspx?content=TreeView&#038;CategoryID=80" title="ЦІКАВЕ"  description="ЦІКАВЕ"/>  
+  <siteMapNode url="~/Default.aspx?content=PhotoSalonLinkList" title="КОНТАКТИ"  description="КОНТАКТИ" />
+    <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=73" title="HAND-MADE"  description="HAND-MADE"/>
+  <siteMapNode url="~/Default.aspx?content=SiteMapTree" title="КАРТА САЙТУ"  description="КАРТА САЙТУ" />
+</siteMapNode>
+</siteMap>
