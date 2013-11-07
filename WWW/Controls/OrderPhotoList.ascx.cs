@@ -76,9 +76,9 @@ public partial class OrderPhotoList : ListControlBase, Interfaces.IColouredGrid
      }
 
      i.ImageUrl = Path.Combine(orderImagePath, photoName + "_s" + extension);
-     i.Attributes["onclick"] = "return VIKKI_ShowImageViewWindow('0', '"
+     /*i.Attributes["onclick"] = "return VIKKI_ShowImageViewWindow('0', '"
          + photoName + "_m" + extension + "', '" + OrderID.ToString() + "');";
-     i.CssClass = "VIKKI_HandCursor";
+     i.CssClass = "VIKKI_HandCursor";*/
 
         return i;
     }
@@ -117,7 +117,7 @@ public partial class OrderPhotoList : ListControlBase, Interfaces.IColouredGrid
 
         Utils.DeleteFile(folderName, gei["PhotoName"].Text);
         Utils.DeleteFile(targetFolder, photoName + "_s" + extension);
-        Utils.DeleteFile(targetFolder, photoName + "_m" + extension);
+        //Utils.DeleteFile(targetFolder, photoName + "_m" + extension);
     }
 
     private string PhotoFormat(int merchandiseID)

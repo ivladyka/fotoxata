@@ -4,3 +4,9 @@ C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Release\MyGeneration.dOOdads
 C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Release\ResolveAssemblyReference.cache
 C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Release\Fotoxata_DAL.dll
 C:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Release\Fotoxata_DAL.pdb
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Release\Fotoxata_DAL.dll
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Release\Fotoxata_DAL.pdb
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\bin\Release\MyGeneration.dOOdads.dll
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Release\Fotoxata_DAL.csprojResolveAssemblyReference.cache
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Release\Fotoxata_DAL.dll
+E:\Project\Fotoxata\Db\DALProjects\Fotoxata_DAL\obj\Release\Fotoxata_DAL.pdb

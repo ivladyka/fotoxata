@@ -97,6 +97,10 @@ public partial class OrderAdd : ControlBase
             System.IO.Directory.CreateDirectory(printFolder + "//");
         }
         int i = 1;
+        if (!System.IO.Directory.Exists(orderFolder + "//"))
+        {
+            System.IO.Directory.CreateDirectory(orderFolder + "//");
+        }
         foreach (UploadedFile af in auFile.UploadedFiles)
         {
             string newGUID = "photo" + i.ToString();
@@ -104,10 +108,6 @@ public partial class OrderAdd : ControlBase
             string extension = af.GetExtension();
             string newFileName = newGUID + extension;
             string path = Path.Combine(orderFolder, newFileName);
-            if (!System.IO.Directory.Exists(orderFolder + "//"))
-            {
-                System.IO.Directory.CreateDirectory(orderFolder + "//");
-            }
             af.SaveAs(path, true);
             OrderPhoto op = new OrderPhoto();
             op.AddNew();
@@ -127,8 +127,8 @@ public partial class OrderAdd : ControlBase
                 newFileName = newGUID + "_s" + extension;
                 Utils.ResizeAndSaveJpgImage(b, 79, 120, Path.Combine(orderFolder, newFileName), true);
 
-                newFileName = newGUID + "_m" + extension;
-                Utils.ResizeAndSaveJpgImage(b, 500, 620, Path.Combine(orderFolder, newFileName), true);
+                //newFileName = newGUID + "_m" + extension;
+                //Utils.ResizeAndSaveJpgImage(b, 500, 620, Path.Combine(orderFolder, newFileName), true);
                 fs.Close();
             }
             catch { }
@@ -380,7 +380,7 @@ public partial class OrderAdd : ControlBase
             }
             Utils.DeleteFile(orderFolder, op.PhotoName);
             Utils.DeleteFile(orderFolder, photoName + "_s" + extension);
-            Utils.DeleteFile(orderFolder, photoName + "_m" + extension);
+            //Utils.DeleteFile(orderFolder, photoName + "_m" + extension);
             op.DeleteAll();
             op.Save();
         }
@@ -451,9 +451,9 @@ public partial class OrderAdd : ControlBase
                 }
 
                 i.ImageUrl = Path.Combine(orderImagePath, photoName + "_s" + extension);
-                i.Attributes["onclick"] = "return VIKKI_ShowImageViewWindow('0', '"
+                /*i.Attributes["onclick"] = "return VIKKI_ShowImageViewWindow('0', '"
                     + photoName + "_m" + extension + "', '" + OrderID.ToString() + "');";
-                i.CssClass = "VIKKI_HandCursor";
+                i.CssClass = "VIKKI_HandCursor";*/
                 i.ToolTip = dataRowView["ClientPhotoName"].ToString();
                 e.Item.Cells[3].Text = "";
                 e.Item.Cells[3].Controls.Add(i);

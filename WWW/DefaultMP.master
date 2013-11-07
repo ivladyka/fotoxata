@@ -86,7 +86,7 @@
 </div>
 </div> 
 <div style="width: 1000px; top: 0px;"  >
-    <telerik:RadScriptManager runat="Server" ID="RadScriptManager1" />
+    <telerik:RadScriptManager runat="Server" ID="RadScriptManager1" AsyncPostBackTimeout="3600" />
    
             <div> 
                     </div> 
