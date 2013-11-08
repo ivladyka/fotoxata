@@ -41,8 +41,10 @@ public partial class NewsLinkList : ControlBase
                 }
                 if (content.Length > 500)
                 {
-                    content = content.Substring(0, 499) + "<br/> <br/><a class='titleQuestion' href='Default.aspx?content=NewsView&NewsID=" + n.NewsID
-                        + "'>" + Resources.Fotoxata.More + " >></a>";
+                    content = StringHtmlExtensions.TruncateHtml(content, 500, " ...") + "<br/> <br/><a class='titleQuestion' href='Default.aspx?content=NewsView&NewsID=" 
+                        + n.NewsID + "'>" + Resources.Fotoxata.More + " >></a>";
+                    /*content = content.Substring(0, 499) + "<br/> <br/><a class='titleQuestion' href='Default.aspx?content=NewsView&NewsID=" + n.NewsID
+                        + "'>" + Resources.Fotoxata.More + " >></a>";*/
                 }
                 row = new HtmlTableRow();
                 HtmlTableCell cell = AddNewCell(content, "", "0px", "bottom");

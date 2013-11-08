@@ -3,3 +3,4 @@ C:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\obj\Release\ResolveAssem
 C:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\obj\Release\MyGeneration.dOOdads.dll
 E:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\bin\Release\MyGeneration.dOOdads.dll
 E:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\obj\Release\MyGeneration.dOOdads.dll
+E:\Project\fotoxata\Db\DALProjects\MyGeneration.dOOdads\obj\Release\MyGeneration.dOOdads.csprojResolveAssemblyReference.cache
