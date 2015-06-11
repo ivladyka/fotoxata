@@ -9,10 +9,8 @@
     <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
     <SourceWebVirtualPath>/WWW</SourceWebVirtualPath>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <SourceWebProject>
-    </SourceWebProject>
-    <SourceWebMetabasePath>
-    </SourceWebMetabasePath>
+    <SourceWebProject>E:\Project\fotoxata\WWW</SourceWebProject>
+    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/7/ROOT</SourceWebMetabasePath>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

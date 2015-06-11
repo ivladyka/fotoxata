@@ -154,10 +154,41 @@ color: #a1a1a1 !important;
             }
             return OrderPhotoTable.rows[OrderPhotoTable.rows.length - 1];
         }
+
+    $(document).ready(function () {
+        VIKKI_SetCookie('FOTOXATA_CURR_OrderID', '0');
+    });
+
+    /*Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+
+    function EndRequestHandler(sender, args) {
+        if (args.get_error() != undefined) {
+            var objError = args.get_error();
+            args.set_errorHandled(true);
+            alert(objError.message);
+            //showMessage({ messageType: 'error', message: objError.message });
+        }
+    }
+
+    if (!document.all) {
+        alert('hi2');
+        window.onbeforeunload = function () {
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(VIKKI_endRequest);
+        }
+    }
+
+    function VIKKI_endRequest(sender, e) {
+        alert('hi');
+        err = e.get_error();
+        if (err) {
+            if (err.name == "Sys.WebForms.PageRequestManagerServerErrorException") {
+                e.set_errorHandled(true);
+            }
+        }
+    }*/
 </script>
 </telerik:RadCodeBlock>
-<div>   
-<div class="dottedtop" style="margin-top: 10px; overflow: hidden; min-height:400px;">
+<div class="dottedtop" style="margin-top: 10px; min-height:400px;">
 <telerik:RadAjaxPanel id="rapImageView" runat="server" EnableAJAX="True" 
     LoadingPanelID="ralpOrderPhoto" ClientEvents-OnResponseEnd="dgdOrderPhotoRequestEnd" 
                 BorderColor="#a1a1a1">
@@ -210,7 +241,7 @@ color: #a1a1a1 !important;
                         <asp:Panel ID="pnlUploadPhoto" runat="server">
                         <telerik:RadAsyncUpload runat="server" ID="auFile" 
                             AllowedFileExtensions="jpg,bmp,tiff" Width="300px" Skin="Default" 
-                                MultipleFileSelection="Automatic" ForeColor="#d8d8d8">
+                                MultipleFileSelection="Automatic" ForeColor="#d8d8d8" HttpHandlerUrl="~/PhotoUpload.ashx">
                             <Localization Remove="Видалити" Select="Вибрати" />
                         </telerik:RadAsyncUpload>
                         </asp:Panel>

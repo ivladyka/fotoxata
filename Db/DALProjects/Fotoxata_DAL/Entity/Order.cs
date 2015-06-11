@@ -33,5 +33,18 @@ namespace VikkiSoft_BLL
             parameters.Add(new SqlParameter("@UserID", SqlDbType.Int), userID);
             return base.LoadFromSql("[" + this.SchemaStoredProcedure + "usp_Order_LoadByUserID]", parameters);
         }
+
+        public virtual void UpdateOrderPhotosAllUploaded(int orderID, int count, bool border, int paperTypeID, int merchandiseID)
+        {
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@OrderID", SqlDbType.Int), orderID);
+            parameters.Add(new SqlParameter("@Count", SqlDbType.Int), count);
+            parameters.Add(new SqlParameter("@Border", SqlDbType.Bit), border);
+            parameters.Add(new SqlParameter("@PaperTypeID", SqlDbType.Int), paperTypeID);
+            parameters.Add(new SqlParameter("@MerchandiseID", SqlDbType.Int), merchandiseID);
+
+            base.LoadFromSql("[" + this.SchemaStoredProcedure + "UpdateOrderPhotosAllUploaded]", parameters);
+        }
+
 	}
 }

@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using MyGeneration.dOOdads;
 using Telerik.Web.UI;
 using VikkiSoft_BLL;
+using System.Web;
 using Image=System.Web.UI.WebControls.Image;
 
 public partial class OrderAdd : ControlBase
@@ -23,6 +24,26 @@ public partial class OrderAdd : ControlBase
         base.InitOnFirstLoading();
         text_CellPhone.Focus();
         LoadLoggedUserCellPhone();
+        PhotoAsyncUploadConfiguration config =
+            auFile.CreateDefaultUploadConfiguration<PhotoAsyncUploadConfiguration>();
+        Delivery d = new Delivery();
+        if (d.LoadAll())
+        {
+            config.DeliveryID = d.DeliveryID;
+        }
+        PaperType pt = new PaperType();
+        if (pt.LoadAll())
+        {
+            config.PaperTypeID = pt.PaperTypeID;
+        }
+        Merchandise m = new Merchandise();
+        m.Where.CategoryID.Value = CategoryID;
+        if (m.Query.Load())
+        {
+            config.MerchandiseID = m.MerchandiseID;
+        }
+        auFile.UploadConfiguration = config;
+
         auFile.TemporaryFolder = Utils.GaleryImagePath + "/RadUploadTemp";
         auFile.Localization.Select = Resources.Fotoxata.Select;
         auFile.Localization.Remove = Resources.Fotoxata.Remove;
@@ -40,6 +61,18 @@ public partial class OrderAdd : ControlBase
         LoadTitle();
     }
 
+    protected void auFile_FileUploaded(object sender, FileUploadedEventArgs e)
+    {
+        PhotoAsyncUploadResult result = e.UploadResult as PhotoAsyncUploadResult;
+        if(result.OrderID > 0)
+        {
+            /*if(((PhotoAsyncUploadConfiguration)auFile.UploadConfiguration).OrderID == 0)
+            {
+                ((PhotoAsyncUploadConfiguration)auFile.UploadConfiguration).OrderID = result.OrderID;
+            }*/
+        }
+    }
+
     private void LoadLoggedUserCellPhone()
     {
         if (Request.IsAuthenticated)
@@ -53,21 +86,13 @@ public partial class OrderAdd : ControlBase
         AddOrder(true);
     }
 
-    private void AddOrder(bool addOrder)
+    private void AddOrder(bool preparePrint)
     {
         Order o = new Order();
         string userName = "";
         string cellPhone = text_CellPhone.Text.Trim();
-        if (OrderID == 0)
-        {
-            o.AddNew();
-            o.DateCreated = DateTime.Now;
-        }
-        else
-        {
-            o.LoadByPrimaryKey(OrderID);
-        }
-        if (addOrder)
+        o.LoadByPrimaryKey(OrderID);
+        if (preparePrint)
         {
             o.OrderStatusID = 1;
             VikkiSoft_BLL.User u = new User();
@@ -88,59 +113,18 @@ public partial class OrderAdd : ControlBase
         o.DeliveryID = int.Parse(ddlDelivery.SelectedValue);
         o.ClientNote = tbClientNote.Text;
         o.Save();
-        OrderID = o.OrderID;
 
-        string orderFolder = Server.MapPath(Utils.OrderImagePath + "//" + OrderID);
-        string printFolder = Server.MapPath(Utils.PrintImagePath + "//" + OrderID);
-        if (!System.IO.Directory.Exists(printFolder + "//"))
-        {
-            System.IO.Directory.CreateDirectory(printFolder + "//");
-        }
-        int i = 1;
-        if (!System.IO.Directory.Exists(orderFolder + "//"))
-        {
-            System.IO.Directory.CreateDirectory(orderFolder + "//");
-        }
-        foreach (UploadedFile af in auFile.UploadedFiles)
-        {
-            string newGUID = "photo" + i.ToString();
-            int countPhoto = (int)rntbCount.Value;
-            string extension = af.GetExtension();
-            string newFileName = newGUID + extension;
-            string path = Path.Combine(orderFolder, newFileName);
-            af.SaveAs(path, true);
-            OrderPhoto op = new OrderPhoto();
-            op.AddNew();
-            op.ClientPhotoName = af.FileName;
-            op.Count = countPhoto;
-            op.Border = chkBorder.Checked;
-            op.PaperTypeID = int.Parse(paperTypeChoice.SelectedValue);
-            op.MerchandiseID = int.Parse(photoFormatChoice.SelectedValue);
-            op.OrderID = OrderID;
-            op.PhotoName = newFileName;
-            op.Save();
-            try
-            {
-                System.IO.FileStream fs = System.IO.File.OpenRead(Path.Combine(orderFolder, newFileName));
-                byte[] b = new byte[fs.Length];
-                fs.Read(b, 0, b.Length);
-                newFileName = newGUID + "_s" + extension;
-                Utils.ResizeAndSaveJpgImage(b, 79, 120, Path.Combine(orderFolder, newFileName), true);
+        Order o1 = new Order();
+        o1.UpdateOrderPhotosAllUploaded(OrderID, (int)rntbCount.Value, chkBorder.Checked, int.Parse(paperTypeChoice.SelectedValue), int.Parse(photoFormatChoice.SelectedValue));
 
-                //newFileName = newGUID + "_m" + extension;
-                //Utils.ResizeAndSaveJpgImage(b, 500, 620, Path.Combine(orderFolder, newFileName), true);
-                fs.Close();
-            }
-            catch { }
-            i++;
-        }
         Update(false);
-        if(addOrder)
+        if(preparePrint)
         {
             MoveCreateFolders();
             SaveOrderInfo(userName, cellPhone);
             Utils.SendEmail("Додано нове замовлення.", "Додано нове замовлення. Номер замовлення - " + OrderID, 
                 System.Configuration.ConfigurationManager.AppSettings["AddOrderEmail"].Trim());
+            OrderID = 0;
             Response.Redirect("Default.aspx?content=OrderAdded&OrderID=" + OrderID);
             return;
         }
@@ -174,23 +158,6 @@ public partial class OrderAdd : ControlBase
             WriteLog("Ціна: " + o.Amount.ToString("N") + " грн.", orderInfo);
         }
         orderInfo.Close();
-    }
-
-    private int OrderID
-    {
-        get
-        {
-            int orderID = 0;
-            if (this.ViewState["OrderID"] != null)
-            {
-                orderID = (int)this.ViewState["OrderID"];
-            }
-            return orderID;
-        }
-        set
-        {
-            this.ViewState["OrderID"] = value;
-        }
     }
 
     private void MoveCreateFolders()
@@ -392,6 +359,7 @@ public partial class OrderAdd : ControlBase
             new Telerik.WebControls.GridNeedDataSourceEventHandler(this.rgdOrderPhoto_NeedDataSource);
         this.rgdOrderPhoto.ItemCommand +=
             new Telerik.WebControls.GridCommandEventHandler(this.rgdOrderPhoto_ItemCommand);
+        auFile.FileUploaded += new FileUploadedEventHandler(auFile_FileUploaded);
         base.SetEventHandlers();
     }
 
@@ -617,5 +585,24 @@ public partial class OrderAdd : ControlBase
     {
         log.WriteLine(message);
         log.Flush();
+    }
+
+    private int OrderID
+    {
+        set
+        {
+            HttpCookie FOTOXATA_CURR_OrderIDCookie = new HttpCookie("FOTOXATA_CURR_OrderID", value.ToString());
+            HttpContext.Current.Response.Cookies.Add(FOTOXATA_CURR_OrderIDCookie);
+        }
+
+        get
+        {
+            int orderID = 0;
+            if (HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderID"] != null)
+            {
+                int.TryParse(HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderID"].Value.ToString(), out orderID);
+            }
+            return orderID;
+        }
     }
 }

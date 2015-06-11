@@ -25,6 +25,5 @@ D:\project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\obj\Debug\MyGeneration.d
 D:\project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\obj\Debug\MyGeneration.dOOdads.pdb
 E:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\bin\Debug\MyGeneration.dOOdads.dll
 E:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\bin\Debug\MyGeneration.dOOdads.pdb
-E:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\obj\Debug\MyGeneration.dOOdads.csprojResolveAssemblyReference.cache
 E:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\obj\Debug\MyGeneration.dOOdads.dll
 E:\Project\Fotoxata\Db\DALProjects\MyGeneration.dOOdads\obj\Debug\MyGeneration.dOOdads.pdb

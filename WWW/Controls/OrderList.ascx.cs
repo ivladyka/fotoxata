@@ -39,7 +39,7 @@ public partial class OrderList : ListControlBase, Interfaces.IColouredGrid
                 0, HorizontalAlign.Center, "");
         SetColumnSettings(Order.ColumnNames.CellPhone, true, "Телефон", 0, HorizontalAlign.Center, "");
         SetColumnSettings("UserName", true, "Клієнт", 90, HorizontalAlign.Center, "");
-        SetColumnSettings(Order.ColumnNames.ClientNote, true, "Примітка Клінта", 0, HorizontalAlign.Left, "");
+        SetColumnSettings(Order.ColumnNames.ClientNote, true, "Примітка Клієнта", 0, HorizontalAlign.Left, "");
         SetColumnSettings(Order.ColumnNames.OfficeNote, true, "Примітка працівників фотосалону", 0, HorizontalAlign.Left, "");
         SetColumnSettings(Order.ColumnNames.PhotoCount, true, "Кількість фото", 60, HorizontalAlign.Center, "");
         SetColumnSettings(Order.ColumnNames.Amount, true, "Вартість, грн.", 60, HorizontalAlign.Center, "{0:f2}");
