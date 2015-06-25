@@ -22,5 +22,23 @@ namespace VikkiSoft_BLL
 
             return base.LoadFromSql("[" + this.SchemaStoredProcedure + "usp_OrderPhoto_LoadByOrderID]", parameters);
         }
+
+        public virtual void DeleteOrderPhotoByPhotoName(int orderID, string photoName)
+        {
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@PhotoName", SqlDbType.VarChar), photoName);
+            parameters.Add(new SqlParameter("@OrderID", SqlDbType.Int), orderID);
+
+            base.LoadFromSql("[" + this.SchemaStoredProcedure + "DeleteOrderPhotoByPhotoName]", parameters);
+        }
+
+        public virtual bool LoadByClientPhotoName(int orderID, string clientPhotoName)
+        {
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@ClientPhotoName", SqlDbType.VarChar), clientPhotoName);
+            parameters.Add(new SqlParameter("@OrderID", SqlDbType.Int), orderID);
+
+            return base.LoadFromSql("[" + this.SchemaStoredProcedure + "usp_OrderPhoto_LoadByClientPhotoName]", parameters);
+        }
 	}
 }

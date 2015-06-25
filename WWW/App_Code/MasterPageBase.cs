@@ -1,5 +1,6 @@
 ﻿using System.Web.UI;
 using System.Web.UI.WebControls;
+using Telerik.Web.UI;
 
 /// <summary>
 /// Summary description for MasterPageBase
@@ -47,6 +48,19 @@ public class MasterPageBase : System.Web.UI.MasterPage
                 {
                     return mnTop;
                 }
+            }
+            return null;
+        }
+    }
+
+    public RadScriptManager RadScriptManager1
+    {
+        get
+        {
+            RadScriptManager RadScriptManager1 = (RadScriptManager)Page.Master.FindControl("RadScriptManager1");
+            if (RadScriptManager1 != null)
+            {
+                return RadScriptManager1;
             }
             return null;
         }

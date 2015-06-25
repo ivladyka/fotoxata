@@ -49,7 +49,7 @@ public class PhotoUpload : AsyncUploadHandler, System.Web.SessionState.IRequires
         file.SaveAs(path, true);
         OrderPhoto op = new OrderPhoto();
         op.AddNew();
-        op.ClientPhotoName = file.FileName;
+        op.ClientPhotoName = new FileInfo(file.FileName).Name;
         op.Count = 0;
         op.Border = false;
         op.PaperTypeID = pauConfiguration.PaperTypeID;
@@ -66,25 +66,9 @@ public class PhotoUpload : AsyncUploadHandler, System.Web.SessionState.IRequires
             Utils.ResizeAndSaveJpgImage(b, 79, 120, Path.Combine(orderFolder, newFileName), true);
             fs.Close();
         }
-        catch { }
+        catch{}
         i++;
         PhotoIndex = i;
-        
-        //SampleAsyncUploadResult result = CreateDefaultUploadResult<SampleAsyncUploadResult>(file);
-
-        /*int userID = -1;
-        // You can obtain any custom information passed from the page via casting the configuration parameter to your custom class
-        SampleAsyncUploadConfiguration sampleConfiguration = configuration as SampleAsyncUploadConfiguration;
-        if (sampleConfiguration != null)
-        {
-            userID = sampleConfiguration.UserID;
-        }
-         
-
-        // Populate any additional fields into the upload result.
-        // The upload result is available both on the client and on the server
-        result.ImageID = InsertImage(file, userID);
-        */
         
         return result;
     }

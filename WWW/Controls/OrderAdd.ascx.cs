@@ -61,18 +61,6 @@ public partial class OrderAdd : ControlBase
         LoadTitle();
     }
 
-    protected void auFile_FileUploaded(object sender, FileUploadedEventArgs e)
-    {
-        PhotoAsyncUploadResult result = e.UploadResult as PhotoAsyncUploadResult;
-        if(result.OrderID > 0)
-        {
-            /*if(((PhotoAsyncUploadConfiguration)auFile.UploadConfiguration).OrderID == 0)
-            {
-                ((PhotoAsyncUploadConfiguration)auFile.UploadConfiguration).OrderID = result.OrderID;
-            }*/
-        }
-    }
-
     private void LoadLoggedUserCellPhone()
     {
         if (Request.IsAuthenticated)
@@ -88,48 +76,62 @@ public partial class OrderAdd : ControlBase
 
     private void AddOrder(bool preparePrint)
     {
-        Order o = new Order();
-        string userName = "";
-        string cellPhone = text_CellPhone.Text.Trim();
-        o.LoadByPrimaryKey(OrderID);
-        if (preparePrint)
+        try
         {
-            o.OrderStatusID = 1;
-            VikkiSoft_BLL.User u = new User();
-            u.Where.CellPhone.Value = text_CellPhone.Text.Trim();
-            if (u.Query.Load())
+            Order o = new Order();
+            string userName = "";
+            string cellPhone = text_CellPhone.Text.Trim();
+            o.LoadByPrimaryKey(OrderID);
+            if (preparePrint)
             {
-                o.UserID = u.UserID;
-                o.SetColumnNull(Order.ColumnNames.CellPhone);
-                userName = u.s_LastName + " " + u.s_FirstName;
-                cellPhone = u.s_CellPhone;
+                o.OrderStatusID = 1;
+                VikkiSoft_BLL.User u = new User();
+                u.Where.CellPhone.Value = text_CellPhone.Text.Trim();
+                if (u.Query.Load())
+                {
+                    o.UserID = u.UserID;
+                    o.SetColumnNull(Order.ColumnNames.CellPhone);
+                    userName = u.s_LastName + " " + u.s_FirstName;
+                    cellPhone = u.s_CellPhone;
+                }
+                else
+                {
+                    o.CellPhone = text_CellPhone.Text.Trim();
+                    o.SetColumnNull(Order.ColumnNames.UserID);
+                }
             }
-            else
+            o.DeliveryID = int.Parse(ddlDelivery.SelectedValue);
+            o.ClientNote = tbClientNote.Text;
+            o.Save();
+
+            Order o1 = new Order();
+            o1.UpdateOrderPhotosAllUploaded(OrderID, (int)rntbCount.Value, chkBorder.Checked, int.Parse(paperTypeChoice.SelectedValue), int.Parse(photoFormatChoice.SelectedValue));
+
+            Update(false);
+            if (preparePrint)
             {
-                o.CellPhone = text_CellPhone.Text.Trim();
-                o.SetColumnNull(Order.ColumnNames.UserID);
+                MoveCreateFolders();
+                SaveOrderInfo(userName, cellPhone);
+                Utils.SendEmail("Додано нове замовлення.", "Додано нове замовлення. Номер замовлення - " + OrderID,
+                    System.Configuration.ConfigurationManager.AppSettings["AddOrderEmail"].Trim());
+                OrderID = 0;
+                Response.Redirect("Default.aspx?content=OrderAdded&OrderID=" + OrderID);
+                return;
             }
+            rgdOrderPhoto.Rebind();
+            SetEditMode(true);
         }
-        o.DeliveryID = int.Parse(ddlDelivery.SelectedValue);
-        o.ClientNote = tbClientNote.Text;
-        o.Save();
-
-        Order o1 = new Order();
-        o1.UpdateOrderPhotosAllUploaded(OrderID, (int)rntbCount.Value, chkBorder.Checked, int.Parse(paperTypeChoice.SelectedValue), int.Parse(photoFormatChoice.SelectedValue));
-
-        Update(false);
-        if(preparePrint)
+        catch (Exception ex)
         {
-            MoveCreateFolders();
-            SaveOrderInfo(userName, cellPhone);
-            Utils.SendEmail("Додано нове замовлення.", "Додано нове замовлення. Номер замовлення - " + OrderID, 
-                System.Configuration.ConfigurationManager.AppSettings["AddOrderEmail"].Trim());
-            OrderID = 0;
-            Response.Redirect("Default.aspx?content=OrderAdded&OrderID=" + OrderID);
-            return;
+            Error e = new Error();
+            e.AddNew();
+            e.Date = DateTime.Now;
+            e.StackTrace = ex.StackTrace;
+            e.Name = ex.Message;
+            e.Browser = System.Web.HttpContext.Current.Request.Browser.Browser;
+            e.Description = ex.Message;
+            e.Save();
         }
-        rgdOrderPhoto.Rebind();
-        SetEditMode(true);
     }
 
     private void SaveOrderInfo(string userName, string cellPhone)
@@ -170,35 +172,42 @@ public partial class OrderAdd : ControlBase
         {
             do
             {
-                string folderName = printFolder + "//" + PhotoFormat(op.MerchandiseID);
-                if(op.PaperTypeID == 1)
-                {
-                    folderName += "MAT";
-                }
-                else
-                {
-                    folderName += "GL";
-                }
-                if(op.Border)
-                {
-                    folderName += "_B";
-                }
-                if (!System.IO.Directory.Exists(folderName + "//"))
-                {
-                    System.IO.Directory.CreateDirectory(folderName + "//");
-                }
-                string sourceFileName = Path.Combine(orderFolder, op.s_PhotoName);
-                string destFileName = op.s_PhotoName;
-                if (op.Count > 1)
-                {
-                    string[] fileParts = op.s_PhotoName.Split('.');
-                    if(fileParts.Length == 2)
+                    string folderName = printFolder + "//" + PhotoFormat(op.MerchandiseID);
+                    if (op.PaperTypeID == 1)
                     {
-                        destFileName = "(" + op.Count + ")" + fileParts[0] + "." + fileParts[1];
+                        folderName += "MAT";
                     }
-                }
-                string desctFileName = Path.Combine(folderName, destFileName);
-                File.Move(sourceFileName, desctFileName);
+                    else
+                    {
+                        folderName += "GL";
+                    }
+                    if (op.Border)
+                    {
+                        folderName += "_B";
+                    }
+                    if (!System.IO.Directory.Exists(folderName + "//"))
+                    {
+                        System.IO.Directory.CreateDirectory(folderName + "//");
+                    }
+                    string sourceFileName = Path.Combine(orderFolder, op.s_PhotoName);
+                    string destFileName = op.s_PhotoName;
+                    if (op.Count > 1)
+                    {
+                        string[] fileParts = op.s_PhotoName.Split('.');
+                        if (fileParts.Length == 2)
+                        {
+                            destFileName = "(" + op.Count + ")" + fileParts[0] + "." + fileParts[1];
+                        }
+                    }
+                    string desctFileName = Path.Combine(folderName, destFileName);
+                    try
+                    {
+                        File.Move(sourceFileName, desctFileName);
+                    }
+                    catch
+                    {
+                        File.Copy(sourceFileName, desctFileName);
+                    }
             } while (op.MoveNext());
         }
     }
@@ -359,7 +368,13 @@ public partial class OrderAdd : ControlBase
             new Telerik.WebControls.GridNeedDataSourceEventHandler(this.rgdOrderPhoto_NeedDataSource);
         this.rgdOrderPhoto.ItemCommand +=
             new Telerik.WebControls.GridCommandEventHandler(this.rgdOrderPhoto_ItemCommand);
-        auFile.FileUploaded += new FileUploadedEventHandler(auFile_FileUploaded);
+        //auFile.FileUploaded += new FileUploadedEventHandler(auFile_FileUploaded);
+        /*MasterPageBase master = (MasterPageBase)Page.Master;
+        if (master.RadScriptManager1 != null)
+        {
+            master.RadScriptManager1.AsyncPostBackError += new EventHandler<AsyncPostBackErrorEventArgs>(ScriptManager1_AsyncPostBackError);
+        }*/
+
         base.SetEventHandlers();
     }
 
@@ -604,5 +619,54 @@ public partial class OrderAdd : ControlBase
             }
             return orderID;
         }
+    }
+
+    protected void btnRemovePhoto_Click(object sender, EventArgs e)
+    {
+        string clientPhotoName = hdClientPhotoNameRemove.Value;
+        if(!string.IsNullOrEmpty(clientPhotoName) && OrderID > 0)
+        {
+            try
+            {
+                OrderPhoto op = new OrderPhoto();
+                op.LoadByClientPhotoName(OrderID, clientPhotoName);
+                string targetFolder = Server.MapPath(Utils.OrderImagePath + "//" + OrderID);
+                string photoName = op.PhotoName;
+                string extension = "";
+                if (clientPhotoName.LastIndexOf('.') != -1)
+                {
+                    extension = clientPhotoName.Substring(clientPhotoName.LastIndexOf('.'),
+                        (clientPhotoName.Length - clientPhotoName.LastIndexOf('.')));
+                }
+                photoName = photoName.TrimEnd(extension.ToCharArray());
+                try
+                {
+                    Utils.DeleteFile(targetFolder, photoName + extension);
+                    Utils.DeleteFile(targetFolder, photoName + "_s" + extension);
+                }
+                catch { }
+                op.DeleteAll();
+                op.Save();
+            }
+            catch { }
+        }
+    }
+
+    protected void auFile_FileUploaded(object sender, FileUploadedEventArgs e)
+    {
+        PhotoAsyncUploadResult result = e.UploadResult as PhotoAsyncUploadResult;
+        if (result.OrderID > 0)
+        {
+            /*if(((PhotoAsyncUploadConfiguration)auFile.UploadConfiguration).OrderID == 0)
+            {
+                ((PhotoAsyncUploadConfiguration)auFile.UploadConfiguration).OrderID = result.OrderID;
+            }*/
+        }
+    }
+
+    protected void ScriptManager1_AsyncPostBackError(object sender, AsyncPostBackErrorEventArgs e)
+    {
+        string s = e.Exception.Message;
+        //ScriptManager1.AsyncPostBackErrorMessage = e.Exception.Message;
     }
 }

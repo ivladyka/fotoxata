@@ -65,7 +65,7 @@ color: #a1a1a1 !important;
                 return false;
             }
         }
-        if (ul.get_element().innerHTML.indexOf('ruUploadFailure') != -1) {
+        if (ul.get_element().innerHTML.indexOf('ruUploadFailure') != -1 || ul.get_element().innerHTML.indexOf('ruUploadCancelled') != -1) {
             alert("<%=MaxImageSizeAlert%>");
             return false;
         }
@@ -159,6 +159,27 @@ color: #a1a1a1 !important;
         VIKKI_SetCookie('FOTOXATA_CURR_OrderID', '0');
     });
 
+    function VIKKI_OnClientFileUploadRemoving(sender, args)
+    {
+        if (args.get_row().id.indexOf('auFilerow') > 0)
+        {
+            VIKKI_SetInputValue('<%= hdClientPhotoNameRemove.ClientID %>', args.get_fileName());
+            VIKKI_ClickButtonByClientID('<%= btnRemovePhoto.ClientID %>');
+        }
+    }
+
+    function VIKKI_OnClientFileUploadFailed(sender, args)
+    {
+        args.set_handled(true);
+    }
+
+    Telerik.Web.UI.RadAsyncUpload.prototype._cancelUpload = function (row) {
+        $("#" + row.id + " .ruFileWrap .ruUploadProgress").addClass("ruUploadCancelled");
+        $("#" + row.id + " [name='RowRemove']").addClass("ruRemove");
+        $("#" + row.id + " [name='RowRemove']").removeClass("ruCancel");
+        $("#" + row.id + " [name='RowRemove']").val("Видалити");
+    }
+
     /*Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
 
     function EndRequestHandler(sender, args) {
@@ -241,8 +262,9 @@ color: #a1a1a1 !important;
                         <asp:Panel ID="pnlUploadPhoto" runat="server">
                         <telerik:RadAsyncUpload runat="server" ID="auFile" 
                             AllowedFileExtensions="jpg,bmp,tiff" Width="300px" Skin="Default" 
-                                MultipleFileSelection="Automatic" ForeColor="#d8d8d8" HttpHandlerUrl="~/PhotoUpload.ashx">
-                            <Localization Remove="Видалити" Select="Вибрати" />
+                                MultipleFileSelection="Automatic" ForeColor="#d8d8d8" HttpHandlerUrl="~/PhotoUpload.ashx" OnClientFileUploadRemoving="VIKKI_OnClientFileUploadRemoving"
+                             OnClientFileUploadFailed="VIKKI_OnClientFileUploadFailed">
+                            <Localization Remove="Видалити" Select="Вибрати" Cancel="Відмінити" />
                         </telerik:RadAsyncUpload>
                         </asp:Panel>
                         <asp:Label ID="lblAllowedExtensions" runat="server" Text="<%$Resources:Fotoxata, SelectImages %>"></asp:Label>
@@ -410,7 +432,6 @@ color: #a1a1a1 !important;
             style="border: none;"/>
         </td>
     </tr>
-
 </TABLE>  
 </telerik:RadAjaxPanel>  
 <div style="margin-top: 0px; width:100%; margin-left:35px;">
@@ -434,4 +455,8 @@ color: #a1a1a1 !important;
     </div>
 </telerik:RadAjaxLoadingPanel>
 <div class="bottomdottedtop" style="margin-top: 40px"></div>
+<telerik:RadAjaxPanel id="rapCommands" runat="server" EnableAJAX="True">
+    <asp:Button ID="btnRemovePhoto" runat="server" onclick="btnRemovePhoto_Click" CssClass="VIKKI_HiddenButton"></asp:Button>
+    <INPUT id="hdClientPhotoNameRemove" type="hidden" name="hdClientPhotoNameRemove" runat="server" value=""/>
+</telerik:RadAjaxPanel>
 </div>

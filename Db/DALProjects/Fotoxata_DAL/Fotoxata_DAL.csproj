@@ -71,6 +71,7 @@
     <Compile Include="DAL\Appointment.cs" />
     <Compile Include="DAL\Category.cs" />
     <Compile Include="DAL\Delivery.cs" />
+    <Compile Include="DAL\Error.cs" />
     <Compile Include="DAL\Gallery.cs" />
     <Compile Include="DAL\Merchandise.cs" />
     <Compile Include="DAL\News.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Entity\Appointment.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Delivery.cs" />
+    <Compile Include="Entity\Error.cs" />
     <Compile Include="Entity\Gallery.cs" />
     <Compile Include="Entity\Merchandise.cs" />
     <Compile Include="Entity\News.cs" />
