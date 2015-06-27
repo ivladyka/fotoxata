@@ -115,7 +115,7 @@ public partial class OrderAdd : ControlBase
                 Utils.SendEmail("Додано нове замовлення.", "Додано нове замовлення. Номер замовлення - " + OrderID,
                     System.Configuration.ConfigurationManager.AppSettings["AddOrderEmail"].Trim());
                 OrderID = 0;
-                Response.Redirect("Default.aspx?content=OrderAdded&OrderID=" + OrderID);
+                Response.Redirect("Default.aspx?content=OrderAdded&OrderID=" + OrderID, false);
                 return;
             }
             rgdOrderPhoto.Rebind();

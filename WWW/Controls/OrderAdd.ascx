@@ -69,7 +69,7 @@ color: #a1a1a1 !important;
             alert("<%=MaxImageSizeAlert%>");
             return false;
         }
-        if (ul._uploading > 0) {
+        if ($("ul.ruInputs li span.ruUploadProgress:not(.ruUploadSuccess)").length > 0) {
             alert("<%=WaitCompleteUploadingAlert%>");
             return false;
         }
@@ -170,6 +170,7 @@ color: #a1a1a1 !important;
 
     function VIKKI_OnClientFileUploadFailed(sender, args)
     {
+        $("#divUploadError").text($("#divUploadError").text() + "<br>" + args.get_loadedModuleName() + " : " + args.get_message());
         args.set_handled(true);
     }
 
@@ -459,4 +460,5 @@ color: #a1a1a1 !important;
     <asp:Button ID="btnRemovePhoto" runat="server" onclick="btnRemovePhoto_Click" CssClass="VIKKI_HiddenButton"></asp:Button>
     <INPUT id="hdClientPhotoNameRemove" type="hidden" name="hdClientPhotoNameRemove" runat="server" value=""/>
 </telerik:RadAjaxPanel>
+<div id="divUploadError"></div>
 </div>
