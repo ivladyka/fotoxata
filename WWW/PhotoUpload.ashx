@@ -74,14 +74,7 @@ public class PhotoUpload : AsyncUploadHandler, System.Web.SessionState.IRequires
         }
         catch (Exception ex)
         {
-            Error e = new Error();
-            e.AddNew();
-            e.Date = DateTime.Now;
-            e.StackTrace = ex.StackTrace;
-            e.Name = ex.Message;
-            e.Browser = System.Web.HttpContext.Current.Request.Browser.Browser;
-            e.Description = ex.Message;
-            e.Save();
+            Utils.SaveError(ex);
         }
         
         return result;

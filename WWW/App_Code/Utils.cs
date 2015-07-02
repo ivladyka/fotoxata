@@ -420,4 +420,32 @@ public class Utils
             return System.Configuration.ConfigurationManager.AppSettings["PrintImagePath"];
         }
     }
+
+    public static bool LogError
+    {
+        get
+        {
+            bool logError = false;
+            if (System.Configuration.ConfigurationManager.AppSettings["LogError"] != null)
+            {
+                logError = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["LogError"]);
+            }
+            return logError;
+        }
+    }
+
+    public static void SaveError(Exception ex)
+    {
+        if (LogError)
+        {
+            Error e = new Error();
+            e.AddNew();
+            e.Date = DateTime.Now;
+            e.StackTrace = ex.StackTrace;
+            e.Name = ex.Message;
+            e.Browser = System.Web.HttpContext.Current.Request.Browser.Browser;
+            e.Description = ex.Message;
+            e.Save();
+        }
+    }
 }
