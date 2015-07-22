@@ -390,4 +390,7 @@
   <data name="Agreement" xml:space="preserve">
     <value />
   </data>
+  <data name="OrderAddError" xml:space="preserve">
+    <value>Unfortunately in the process of photos uploading we got system failure. Please upload your photos to print again.</value>
+  </data>
 </root>

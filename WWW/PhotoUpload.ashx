@@ -54,8 +54,24 @@ public class PhotoUpload : AsyncUploadHandler, System.Web.SessionState.IRequires
             op.ClientPhotoName = new FileInfo(file.FileName).Name;
             op.Count = 0;
             op.Border = false;
-            op.PaperTypeID = pauConfiguration.PaperTypeID;
-            op.MerchandiseID = pauConfiguration.MerchandiseID;
+            int paperType = 1;
+            int merchandiseID = 0;
+            if (pauConfiguration != null)
+            {
+                paperType = pauConfiguration.PaperTypeID;
+                merchandiseID = pauConfiguration.MerchandiseID;
+            }
+            else
+            {
+                Merchandise m = new Merchandise();
+                m.Where.CategoryID.Value = 9;
+                if (m.Query.Load())
+                {
+                    merchandiseID = m.MerchandiseID;
+                }
+            }
+            op.PaperTypeID = paperType;
+            op.MerchandiseID = merchandiseID;
             op.OrderID = orderID;
             op.PhotoName = newFileName;
             op.Save();

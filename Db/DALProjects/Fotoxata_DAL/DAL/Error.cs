@@ -154,6 +154,14 @@ namespace VikkiSoft_BLL.DAL
                     return new SqlParameter("@Session", SqlDbType.Text);
 				}
 			}
+
+            public static SqlParameter OrderID
+            {
+                get
+                {
+                    return new SqlParameter("@OrderID", SqlDbType.Int, 0);
+                }
+            }
 		}
 		#endregion		
 	
@@ -167,6 +175,7 @@ namespace VikkiSoft_BLL.DAL
             public const string Name = "Name";
             public const string Description = "Description";
             public const string Session = "Session";
+            public const string OrderID = "OrderID";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -181,7 +190,7 @@ namespace VikkiSoft_BLL.DAL
                     ht[Name] = _Error.PropertyNames.Name;
                     ht[Description] = _Error.PropertyNames.Description;
                     ht[Session] = _Error.PropertyNames.Session;
-
+                    ht[OrderID] = _Error.PropertyNames.OrderID;
 				}
 				return (string)ht[columnName];
 			}
@@ -200,6 +209,7 @@ namespace VikkiSoft_BLL.DAL
             public const string Name = "Name";
             public const string Description = "Description";
             public const string Session = "Session";
+            public const string OrderID = "OrderID";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -214,7 +224,7 @@ namespace VikkiSoft_BLL.DAL
                     ht[Name] = _Error.PropertyNames.Name;
                     ht[Description] = _Error.PropertyNames.Description;
                     ht[Session] = _Error.PropertyNames.Session;
-
+                    ht[OrderID] = _Error.PropertyNames.OrderID;
 				}
 				return (string)ht[propertyName];
 			}
@@ -233,6 +243,7 @@ namespace VikkiSoft_BLL.DAL
             public const string Name = "s_Name";
             public const string Description = "s_Description";
             public const string Session = "s_Session";
+            public const string OrderID = "s_OrderID";
 		}
 		#endregion		
 		
@@ -321,6 +332,18 @@ namespace VikkiSoft_BLL.DAL
                 base.Setstring(ColumnNames.Session, value);
 			}
 		}
+
+        public virtual int OrderID
+        {
+            get
+            {
+                return base.Getint(ColumnNames.OrderID);
+            }
+            set
+            {
+                base.Setint(ColumnNames.OrderID, value);
+            }
+        }
 
 		#endregion
 		
@@ -415,6 +438,21 @@ namespace VikkiSoft_BLL.DAL
 					this.Session = base.SetstringAsString(ColumnNames.Session, value);
 			}
 		}
+
+        public virtual string s_OrderID
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.OrderID) ? string.Empty : base.GetintAsString(ColumnNames.OrderID);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.OrderID);
+                else
+                    this.OrderID = base.SetintAsString(ColumnNames.OrderID, value);
+            }
+        }
 
 
 		#endregion		
@@ -520,6 +558,16 @@ namespace VikkiSoft_BLL.DAL
 					}
 				}
 
+                public WhereParameter OrderID
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.OrderID, Parameters.OrderID);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
 				private WhereClause _clause;
 			}
 			#endregion
@@ -610,6 +658,18 @@ namespace VikkiSoft_BLL.DAL
 				}
 			}
 
+            public WhereParameter OrderID
+            {
+                get
+                {
+                    if (_OrderID_W == null)
+                    {
+                        _OrderID_W = TearOff.OrderID;
+                    }
+                    return _OrderID_W;
+                }
+            }
+
 			private WhereParameter _ErrorID_W = null;
             private WhereParameter _Date_W = null;
             private WhereParameter _StackTrace_W = null;
@@ -617,6 +677,7 @@ namespace VikkiSoft_BLL.DAL
 			private WhereParameter _Name_W = null;
             private WhereParameter _Description_W = null;
             private WhereParameter _Session_W = null;
+            private WhereParameter _OrderID_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -627,9 +688,9 @@ namespace VikkiSoft_BLL.DAL
                 _Name_W = null;
                 _Description_W = null;
                 _Session_W = null;
+                _OrderID_W = null;
 
 				this._entity.Query.FlushWhereParameters();
-
 			}
 	
 			private BusinessEntity _entity;
@@ -753,6 +814,16 @@ namespace VikkiSoft_BLL.DAL
 					}
 				}
 
+                public AggregateParameter OrderID
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.OrderID, Parameters.OrderID);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
 				private AggregateClause _clause;
 			}
 			#endregion
@@ -841,6 +912,18 @@ namespace VikkiSoft_BLL.DAL
 				}
 			}
 
+            public AggregateParameter OrderID
+            {
+                get
+                {
+                    if (_OrderID_W == null)
+                    {
+                        _OrderID_W = TearOff.OrderID;
+                    }
+                    return _OrderID_W;
+                }
+            }
+
 			private AggregateParameter _ErrorID_W = null;
             private AggregateParameter _Date_W = null;
             private AggregateParameter _StackTrace_W = null;
@@ -848,6 +931,7 @@ namespace VikkiSoft_BLL.DAL
             private AggregateParameter _Name_W = null;
             private AggregateParameter _Description_W = null;
             private AggregateParameter _Session_W = null;
+            private AggregateParameter _OrderID_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -858,6 +942,7 @@ namespace VikkiSoft_BLL.DAL
 				_Name_W = null;
                 _Description_W = null;
                 _Session_W = null;
+                _OrderID_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -959,6 +1044,10 @@ namespace VikkiSoft_BLL.DAL
             p = cmd.Parameters.Add(Parameters.Session);
             p.SourceColumn = ColumnNames.Session;
 			p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.OrderID);
+            p.SourceColumn = ColumnNames.OrderID;
+            p.SourceVersion = DataRowVersion.Current;
 
 			return cmd;
 		}

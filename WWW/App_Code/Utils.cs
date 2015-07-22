@@ -445,7 +445,21 @@ public class Utils
             e.Name = ex.Message;
             e.Browser = System.Web.HttpContext.Current.Request.Browser.Browser;
             e.Description = ex.Message;
+            e.OrderID = OrderID;
             e.Save();
+        }
+    }
+
+    private static int OrderID
+    {
+        get
+        {
+            int orderID = 0;
+            if (HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderID"] != null)
+            {
+                int.TryParse(HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderID"].Value.ToString(), out orderID);
+            }
+            return orderID;
         }
     }
 }

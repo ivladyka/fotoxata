@@ -391,4 +391,7 @@
   <data name="Agreement" xml:space="preserve">
     <value>Я згоден з &lt;a href="Default.aspx?content=CategoryView&amp;CategoryID=84" target="_blank"&gt;політикою конфіденційності&lt;/a&gt; та даю згоду на обробку своїх персональних даних та підтверджую, що мені виповнилось 18 років.</value>
   </data>
+  <data name="OrderAddError" xml:space="preserve">
+    <value>Нажаль в процесі завантаження фото відбувся збій системи. Будь ласка завантажте Ваші фото для друку ще раз.</value>
+  </data>
 </root>

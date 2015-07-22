@@ -76,6 +76,11 @@ public partial class OrderAdd : ControlBase
 
     private void AddOrder(bool preparePrint)
     {
+        if (OrderID == 0)
+        {
+            Response.Redirect("Default.aspx?content=OrderAddError", false);
+            return;
+        }
         try
         {
             Order o = new Order();
@@ -199,9 +204,50 @@ public partial class OrderAdd : ControlBase
                     }
                     catch
                     {
-                        File.Copy(sourceFileName, desctFileName);
+                        try
+                        {
+                            File.Copy(sourceFileName, desctFileName);
+                        }
+                        catch {
+                            DeleteOrderPhoto(op.OrderPhotoID);
+                        }
                     }
             } while (op.MoveNext());
+        }
+    }
+
+    private void DeleteOrderPhoto(int orderPhotoID)
+    {
+        OrderPhoto op = new OrderPhoto();
+        if (op.LoadByPrimaryKey(orderPhotoID))
+        {
+            string orderFolder = Server.MapPath(Utils.OrderImagePath + "//" + OrderID);
+            string extension = "";
+            string photoName = op.PhotoName;
+            if (photoName.LastIndexOf('.') != -1)
+            {
+                extension = photoName.Substring(photoName.LastIndexOf('.'),
+                    (photoName.Length - photoName.LastIndexOf('.')));
+                photoName = photoName.Substring(0, photoName.LastIndexOf('.'));
+            }
+            if (System.IO.File.Exists(Path.Combine(orderFolder, op.s_PhotoName)))
+            {
+                try
+                {
+                    Utils.DeleteFile(orderFolder, op.PhotoName);
+                }
+                catch { }
+            }
+            if (System.IO.File.Exists(Path.Combine(orderFolder, photoName + "_s" + extension)))
+            {
+                try
+                {
+                    Utils.DeleteFile(orderFolder, photoName + "_s" + extension);
+                }
+                catch { }
+            }
+            op.DeleteAll();
+            op.Save();
         }
     }
 
