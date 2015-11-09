@@ -256,4 +256,16 @@ public class ChoiceControlBase : ControlBase
             return ddlList.Items.Count;
         }
     }
+
+    public void SelectByTextLike(string searchText)
+    {
+        foreach(RadComboBoxItem item in ddlList.Items)
+        {
+            if(item.Text.IndexOf(searchText) == 0)
+            {
+                item.Selected = true;
+                return;
+            }
+        }
+    }
 }

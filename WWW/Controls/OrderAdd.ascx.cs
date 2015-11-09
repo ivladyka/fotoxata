@@ -58,6 +58,7 @@ public partial class OrderAdd : ControlBase
         btnAddOrder.Attributes["onmouseout"] = "VIKKI_PuzzleOnMouseOver(event, 'NewImages/Ordering" + Utils.LangPrefix + ".gif' );";
         tdAddedPhoto.InnerHtml = Resources.Fotoxata.AddedPhotos + ":";
         tdPriceOnPrint.InnerHtml = "<br />&nbsp;&nbsp;" + Resources.Fotoxata.PriceOnPrint;
+        photoFormatChoice.SelectByTextLike("10");
         LoadTitle();
     }
 
