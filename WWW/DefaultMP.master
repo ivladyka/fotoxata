@@ -109,7 +109,7 @@
  <div style="margin-bottom: 40px; margin-top: 0px; "><a style="color: White; cursor:default;" href="http://www.yourtravel.biz" target="_blank">Your Travel</a><%=Copyright%>  
  <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="http://www.vikkisoft.com/">
  <img id="imgvikkisoft" runat="server" class="VIKKI_HandCursor" src="~/Images/vikkisoft.gif" style="border-width:0px;"  title="VIKKI Soft" />
- </asp:HyperLink> 2012<a style="color: White; cursor:default;" href="http://www.yourtravel.biz" target="_blank">Your Travel</a>
+ </asp:HyperLink> <asp:Label ID="lblYears" runat="server"></asp:Label>
  </div>
  </div>
   </div>

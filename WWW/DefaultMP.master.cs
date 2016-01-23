@@ -45,6 +45,7 @@ public partial class DefaultMP : MasterPageBase
         }
         if (!IsPostBack)
         {
+            lblYears.Text = "2012-" + DateTime.Now.Year;
             if (Request.IsAuthenticated)
             {
                 hlOfficeOnline.Visible = true;
