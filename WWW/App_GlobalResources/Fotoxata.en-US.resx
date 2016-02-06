@@ -247,7 +247,7 @@
     <value>Select</value>
   </data>
   <data name="SelectImages" xml:space="preserve">
-    <value>Select images to upload (jpg, bmp i tiff)</value>
+    <value>Select images to upload (jpg, bmp, jpeg, png i tiff)</value>
   </data>
   <data name="ServiceName" xml:space="preserve">
     <value>Service name</value>
@@ -286,10 +286,10 @@
     <value>At first please upload the files for printing.</value>
   </data>
   <data name="ImageFormatAlert" xml:space="preserve">
-    <value>Only files with the extension jpg, bmp and tiff can be uploaded to the server. Please remove files with other extensions.</value>
+    <value>Only files with the extension jpg, bmp, jpeg, png and tiff can be uploaded to the server. Please remove files with other extensions.</value>
   </data>
   <data name="MaxImageSizeAlert" xml:space="preserve">
-    <value>Maximum file size is 100MB. Acceptable image formats sre jpg, bmp and tiff. Please remove files that marked by exclamation mark.</value>
+    <value>Maximum file size is 100MB. Acceptable image formats sre jpg, bmp, jpeg, png and tiff. Please remove files that marked by exclamation mark.</value>
   </data>
   <data name="MobilePhoneRequire" xml:space="preserve">
     <value>Mobile Phone is required field.</value>

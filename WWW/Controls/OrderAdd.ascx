@@ -156,7 +156,9 @@ color: #a1a1a1 !important;
         }
 
     $(document).ready(function () {
-        VIKKI_SetCookie('FOTOXATA_CURR_OrderID', '0');
+        if ("<%=IsPostBack%>" == "False") {
+            VIKKI_SetCookie('FOTOXATA_CURR_OrderID', '0');
+        }
     });
 
     function VIKKI_OnClientFileUploadRemoving(sender, args)
@@ -262,7 +264,7 @@ color: #a1a1a1 !important;
                     <td>
                         <asp:Panel ID="pnlUploadPhoto" runat="server">
                         <telerik:RadAsyncUpload runat="server" ID="auFile" 
-                            AllowedFileExtensions="jpg,bmp,tiff" Width="300px" Skin="Default" 
+                            AllowedFileExtensions="jpg,bmp,jpeg,png,tiff" Width="300px" Skin="Default" 
                                 MultipleFileSelection="Automatic" ForeColor="#d8d8d8" HttpHandlerUrl="~/PhotoUpload.ashx" OnClientFileUploadRemoving="VIKKI_OnClientFileUploadRemoving"
                              OnClientFileUploadFailed="VIKKI_OnClientFileUploadFailed">
                             <Localization Remove="Видалити" Select="Вибрати" Cancel="Відмінити" />

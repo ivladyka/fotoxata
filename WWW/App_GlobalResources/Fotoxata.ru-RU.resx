@@ -247,7 +247,7 @@
     <value>Выбрать</value>
   </data>
   <data name="SelectImages" xml:space="preserve">
-    <value>Выберите изображение для загрузки (jpg, bmp i tiff)</value>
+    <value>Выберите изображение для загрузки (jpg, bmp, jpeg, png i tiff)</value>
   </data>
   <data name="ServiceName" xml:space="preserve">
     <value>Наименование услуги</value>
@@ -286,10 +286,10 @@
     <value>Сначала загрузите фото для печати.</value>
   </data>
   <data name="ImageFormatAlert" xml:space="preserve">
-    <value>Только файлы с расширением jpg, bmp и tiff могут быть загружены на сервер. Пожалуйста удалите файлы с другими расширениями.</value>
+    <value>Только файлы с расширением jpg, bmp, jpeg, png и tiff могут быть загружены на сервер. Пожалуйста удалите файлы с другими расширениями.</value>
   </data>
   <data name="MaxImageSizeAlert" xml:space="preserve">
-    <value>Максимальный размер файла 100Мб. Допустимые форматы изображений jpg, bmp и tiff. Пожалуйста удалите файлы помеченные знаком.</value>
+    <value>Максимальный размер файла 100Мб. Допустимые форматы изображений jpg, bmp, jpeg, png и tiff. Пожалуйста удалите файлы помеченные знаком.</value>
   </data>
   <data name="MobilePhoneRequire" xml:space="preserve">
     <value>Мобильный телефон - обязательное поле.</value>

@@ -709,4 +709,12 @@ public partial class OrderAdd : ControlBase
         string s = e.Exception.Message;
         //ScriptManager1.AsyncPostBackErrorMessage = e.Exception.Message;
     }
+
+    public bool IsPostBack
+    {
+        get
+        {
+            return Page.IsPostBack;
+        }
+    }
 }
