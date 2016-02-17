@@ -247,7 +247,7 @@
     <value>Вибрати</value>
   </data>
   <data name="SelectImages" xml:space="preserve">
-    <value>Виберіть зображення для завантаження (jpg, bmp, jpeg, png i tiff)</value>
+    <value>Виберіть зображення для завантаження (jpg, bmp, jpeg, png, tif i tiff)</value>
   </data>
   <data name="ServiceName" xml:space="preserve">
     <value>Найменування послуги</value>
@@ -286,10 +286,10 @@
     <value>Спочатку завантажте фото для друку.</value>
   </data>
   <data name="ImageFormatAlert" xml:space="preserve">
-    <value>Тільки файли з розширенням jpg, bmp, jpeg, png i tiff можуть бути завантажені на сервер. Будь ласка видаліть файли з іншими розширеннями.</value>
+    <value>Тільки файли з розширенням jpg, bmp, jpeg, png, tif i tiff можуть бути завантажені на сервер. Будь ласка видаліть файли з іншими розширеннями.</value>
   </data>
   <data name="MaxImageSizeAlert" xml:space="preserve">
-    <value>Максимальний розмір файла 100Мб. Допустимі формати зображень jpg, bmp, jpeg, png i tiff. Будь ласка видаліть файли помічені знаком оклику.</value>
+    <value>Максимальний розмір файла 100Мб. Допустимі формати зображень jpg, bmp, jpeg, png, tif i tiff. Будь ласка видаліть файли помічені знаком оклику.</value>
   </data>
   <data name="MobilePhoneRequire" xml:space="preserve">
     <value>Мобільний телефон - обов'язкове поле.</value>

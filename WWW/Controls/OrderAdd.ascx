@@ -264,7 +264,7 @@ color: #a1a1a1 !important;
                     <td>
                         <asp:Panel ID="pnlUploadPhoto" runat="server">
                         <telerik:RadAsyncUpload runat="server" ID="auFile" 
-                            AllowedFileExtensions="jpg,bmp,jpeg,png,tiff" Width="300px" Skin="Default" 
+                            AllowedFileExtensions="jpg,bmp,jpeg,png,tiff,tif" Width="300px" Skin="Default" 
                                 MultipleFileSelection="Automatic" ForeColor="#d8d8d8" HttpHandlerUrl="~/PhotoUpload.ashx" OnClientFileUploadRemoving="VIKKI_OnClientFileUploadRemoving"
                              OnClientFileUploadFailed="VIKKI_OnClientFileUploadFailed">
                             <Localization Remove="Видалити" Select="Вибрати" Cancel="Відмінити" />
