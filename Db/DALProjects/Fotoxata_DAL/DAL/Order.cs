@@ -178,6 +178,14 @@ namespace VikkiSoft_BLL.DAL
 					return new SqlParameter("@PhotoCount", SqlDbType.Int, 0);
 				}
 			}
+
+            public static SqlParameter OrderGuid
+            {
+                get
+                {
+                    return new SqlParameter("@OrderGuid", SqlDbType.UniqueIdentifier, 0);
+                }
+            }
 			
 		}
 		#endregion		
@@ -195,6 +203,7 @@ namespace VikkiSoft_BLL.DAL
             public const string UserID = "UserID";
             public const string DateCreated = "DateCreated";
             public const string PhotoCount = "PhotoCount";
+            public const string OrderGuid = "OrderGuid";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -212,6 +221,7 @@ namespace VikkiSoft_BLL.DAL
 					ht[UserID] = _Order.PropertyNames.UserID;
 					ht[DateCreated] = _Order.PropertyNames.DateCreated;
 					ht[PhotoCount] = _Order.PropertyNames.PhotoCount;
+                    ht[OrderGuid] = _Order.PropertyNames.OrderGuid;
 
 				}
 				return (string)ht[columnName];
@@ -234,6 +244,7 @@ namespace VikkiSoft_BLL.DAL
             public const string UserID = "UserID";
             public const string DateCreated = "DateCreated";
             public const string PhotoCount = "PhotoCount";
+            public const string OrderGuid = "OrderGuid";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -251,6 +262,7 @@ namespace VikkiSoft_BLL.DAL
 					ht[UserID] = _Order.ColumnNames.UserID;
 					ht[DateCreated] = _Order.ColumnNames.DateCreated;
 					ht[PhotoCount] = _Order.ColumnNames.PhotoCount;
+                    ht[OrderGuid] = _Order.ColumnNames.OrderGuid;
 
 				}
 				return (string)ht[propertyName];
@@ -273,6 +285,7 @@ namespace VikkiSoft_BLL.DAL
             public const string UserID = "s_UserID";
             public const string DateCreated = "s_DateCreated";
             public const string PhotoCount = "s_PhotoCount";
+            public const string OrderGuid = "s_OrderGuid";
 
 		}
 		#endregion		
@@ -398,6 +411,18 @@ namespace VikkiSoft_BLL.DAL
 				base.Setint(ColumnNames.PhotoCount, value);
 			}
 		}
+
+        public virtual Guid OrderGuid
+        {
+            get
+            {
+                return base.GetGuid(ColumnNames.OrderGuid);
+            }
+            set
+            {
+                base.SetGuid(ColumnNames.OrderGuid, value);
+            }
+        }
 
 
 		#endregion
@@ -554,6 +579,20 @@ namespace VikkiSoft_BLL.DAL
 			}
 		}
 
+        public virtual string s_OrderGuid
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.OrderGuid) ? string.Empty : base.GetGuidAsString(ColumnNames.OrderGuid);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.OrderGuid);
+                else
+                    this.OrderGuid = base.SetGuidAsString(ColumnNames.OrderGuid, value);
+            }
+        }
 
 		#endregion		
 	
@@ -687,6 +726,16 @@ namespace VikkiSoft_BLL.DAL
 					}
 				}
 
+                public WhereParameter OrderGuid
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.OrderGuid, Parameters.OrderGuid);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
 
 				private WhereClause _clause;
 			}
@@ -812,6 +861,18 @@ namespace VikkiSoft_BLL.DAL
 				}
 			}
 
+            public WhereParameter OrderGuid
+            {
+                get
+                {
+                    if (_OrderGuid_W == null)
+                    {
+                        _OrderGuid_W = TearOff.OrderGuid;
+                    }
+                    return _OrderGuid_W;
+                }
+            }
+
 			private WhereParameter _OrderID_W = null;
 			private WhereParameter _OrderStatusID_W = null;
 			private WhereParameter _DeliveryID_W = null;
@@ -822,6 +883,7 @@ namespace VikkiSoft_BLL.DAL
 			private WhereParameter _UserID_W = null;
 			private WhereParameter _DateCreated_W = null;
 			private WhereParameter _PhotoCount_W = null;
+            private WhereParameter _OrderGuid_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -835,6 +897,7 @@ namespace VikkiSoft_BLL.DAL
 				_UserID_W = null;
 				_DateCreated_W = null;
 				_PhotoCount_W = null;
+                _OrderGuid_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -991,6 +1054,16 @@ namespace VikkiSoft_BLL.DAL
 					}
 				}
 
+                public AggregateParameter OrderGuid
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.OrderGuid, Parameters.OrderGuid);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
 
 				private AggregateClause _clause;
 			}
@@ -1116,6 +1189,18 @@ namespace VikkiSoft_BLL.DAL
 				}
 			}
 
+            public AggregateParameter OrderGuid
+            {
+                get
+                {
+                    if (_OrderGuid_W == null)
+                    {
+                        _OrderGuid_W = TearOff.OrderGuid;
+                    }
+                    return _OrderGuid_W;
+                }
+            }
+
 			private AggregateParameter _OrderID_W = null;
 			private AggregateParameter _OrderStatusID_W = null;
 			private AggregateParameter _DeliveryID_W = null;
@@ -1126,6 +1211,7 @@ namespace VikkiSoft_BLL.DAL
 			private AggregateParameter _UserID_W = null;
 			private AggregateParameter _DateCreated_W = null;
 			private AggregateParameter _PhotoCount_W = null;
+            private AggregateParameter _OrderGuid_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -1139,6 +1225,7 @@ namespace VikkiSoft_BLL.DAL
 				_UserID_W = null;
 				_DateCreated_W = null;
 				_PhotoCount_W = null;
+                _OrderGuid_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1253,6 +1340,9 @@ namespace VikkiSoft_BLL.DAL
 			p.SourceColumn = ColumnNames.PhotoCount;
 			p.SourceVersion = DataRowVersion.Current;
 
+            p = cmd.Parameters.Add(Parameters.OrderGuid);
+            p.SourceColumn = ColumnNames.OrderGuid;
+            p.SourceVersion = DataRowVersion.Current;
 
 			return cmd;
 		}

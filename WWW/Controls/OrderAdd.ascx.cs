@@ -13,6 +13,10 @@ using Image=System.Web.UI.WebControls.Image;
 
 public partial class OrderAdd : ControlBase
 {
+    private int m_DeliveryID = 0;
+    private int m_OrderID = 0;
+    private int m_OrderPhotoCount = 0;
+    private decimal m_OrderAmount = 0;
 
     public OrderAdd()
 	{
@@ -24,13 +28,8 @@ public partial class OrderAdd : ControlBase
         base.InitOnFirstLoading();
         text_CellPhone.Focus();
         LoadLoggedUserCellPhone();
-        PhotoAsyncUploadConfiguration config =
-            auFile.CreateDefaultUploadConfiguration<PhotoAsyncUploadConfiguration>();
-        Delivery d = new Delivery();
-        if (d.LoadAll())
-        {
-            config.DeliveryID = d.DeliveryID;
-        }
+        PhotoAsyncUploadConfiguration config = auFile.CreateDefaultUploadConfiguration<PhotoAsyncUploadConfiguration>();
+        config.DeliveryID = DeliveryID;
         PaperType pt = new PaperType();
         if (pt.LoadAll())
         {
@@ -116,11 +115,12 @@ public partial class OrderAdd : ControlBase
             Update(false);
             if (preparePrint)
             {
+                o1.CalculateAmount(OrderID);
                 MoveCreateFolders();
                 SaveOrderInfo(userName, cellPhone);
                 Utils.SendEmail("Додано нове замовлення.", "Додано нове замовлення. Номер замовлення - " + OrderID,
                     System.Configuration.ConfigurationManager.AppSettings["AddOrderEmail"].Trim());
-                OrderID = 0;
+                OrderGuid = Guid.NewGuid();
                 Response.Redirect("Default.aspx?content=OrderAdded&OrderID=" + OrderID, false);
                 return;
             }
@@ -129,7 +129,7 @@ public partial class OrderAdd : ControlBase
         }
         catch (Exception ex)
         {
-            Utils.SaveError(ex);
+            Utils.SaveError(ex, this.OrderID);
         }
     }
 
@@ -450,6 +450,8 @@ public partial class OrderAdd : ControlBase
     {
         if (e.Item is Telerik.WebControls.GridHeaderItem)
         {
+            m_OrderPhotoCount = 0;
+            m_OrderAmount = 0;
             CheckBox chkDeleteAll = (CheckBox)e.Item.FindControl("chkDeleteAll");
             if (chkDeleteAll != null)
             {
@@ -480,25 +482,14 @@ public partial class OrderAdd : ControlBase
                 i.ToolTip = dataRowView["ClientPhotoName"].ToString();
                 e.Item.Cells[3].Text = "";
                 e.Item.Cells[3].Controls.Add(i);
+                m_OrderPhotoCount += int.Parse(dataRowView["PhotoCount"].ToString());
+                m_OrderAmount += decimal.Parse(dataRowView["PhotoAmount"].ToString());
             }
         }
         if (e.Item is Telerik.WebControls.GridFooterItem)
         {
-            if (OrderID > 0)
-            {
-                Order o = new Order();
-                if (o.LoadByPrimaryKey(OrderID))
-                {
-                    if (!o.IsColumnNull(Order.ColumnNames.Amount))
-                    {
-                        e.Item.Cells[7].Text = o.Amount.ToString("0.00") + " " + Resources.Fotoxata.Grn;
-                    }
-                    if (!o.IsColumnNull(Order.ColumnNames.PhotoCount))
-                    {
-                        e.Item.Cells[4].Text = o.PhotoCount.ToString();
-                    }
-                }
-            }
+            e.Item.Cells[7].Text = m_OrderAmount.ToString("0.00") + " " + Resources.Fotoxata.Grn;
+            e.Item.Cells[4].Text = m_OrderPhotoCount.ToString();
         }
     }
 
@@ -642,25 +633,6 @@ public partial class OrderAdd : ControlBase
         log.Flush();
     }
 
-    private int OrderID
-    {
-        set
-        {
-            HttpCookie FOTOXATA_CURR_OrderIDCookie = new HttpCookie("FOTOXATA_CURR_OrderID", value.ToString());
-            HttpContext.Current.Response.Cookies.Add(FOTOXATA_CURR_OrderIDCookie);
-        }
-
-        get
-        {
-            int orderID = 0;
-            if (HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderID"] != null)
-            {
-                int.TryParse(HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderID"].Value.ToString(), out orderID);
-            }
-            return orderID;
-        }
-    }
-
     protected void btnRemovePhoto_Click(object sender, EventArgs e)
     {
         string clientPhotoName = hdClientPhotoNameRemove.Value;
@@ -715,6 +687,70 @@ public partial class OrderAdd : ControlBase
         get
         {
             return Page.IsPostBack;
+        }
+    }
+
+    public int DeliveryID
+    {
+        get
+        {
+            if(m_DeliveryID > 0)
+            {
+                return m_DeliveryID;
+            }
+            Delivery d = new Delivery();
+            if (d.LoadAll())
+            {
+                m_DeliveryID = d.DeliveryID;
+            }
+            return m_DeliveryID;
+        }
+    }
+
+    public string NewGuidID
+    {
+        get
+        {
+            return Guid.NewGuid().ToString();
+        }
+    }
+
+    private int OrderID
+    {
+        get
+        {
+            if (m_OrderID > 0)
+            {
+                return m_OrderID;
+            }
+            if (OrderGuid != Guid.Empty)
+            {
+                Order o = new Order();
+                if(o.LoadByOrderGuid(OrderGuid))
+                {
+                    m_OrderID = o.OrderID;
+                }
+            }
+            return m_OrderID;
+        }
+    }
+
+    private Guid OrderGuid
+    {
+        set
+        {
+            HttpCookie FOTOXATA_CURR_OrderGuidCookie = new HttpCookie("FOTOXATA_CURR_OrderGuid", value.ToString());
+            HttpContext.Current.Response.Cookies.Add(FOTOXATA_CURR_OrderGuidCookie);
+        }
+
+        get
+        {
+            Guid OrderGuid = Guid.Empty;
+            if (HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderGuid"] != null)
+            {
+                OrderGuid = new Guid(HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderGuid"].Value.ToString());
+            }
+            return OrderGuid;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Data.SqlClient;
 using VikkiSoft_BLL.DAL;
+using System;
 
 namespace VikkiSoft_BLL
 {
@@ -46,5 +47,27 @@ namespace VikkiSoft_BLL
             base.LoadFromSql("[" + this.SchemaStoredProcedure + "UpdateOrderPhotosAllUploaded]", parameters);
         }
 
+        public virtual void CalculateAmount(int orderID)
+        {
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@OrderID", SqlDbType.Int), orderID);
+
+            base.LoadFromSql("[" + this.SchemaStoredProcedure + "usp_Order_CalculateAmount]", parameters);
+        }
+
+        public virtual void IncreasePhotoCount(int orderID)
+        {
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@OrderID", SqlDbType.Int), orderID);
+
+            base.LoadFromSql("[" + this.SchemaStoredProcedure + "usp_Order_IncreasePhotoCount]", parameters);
+        }
+
+        public virtual bool LoadByOrderGuid(Guid orderGuid)
+        {
+            ListDictionary parameters = new ListDictionary();
+            parameters.Add(new SqlParameter("@OrderGuid", SqlDbType.UniqueIdentifier), orderGuid);
+            return base.LoadFromSql("[" + this.SchemaStoredProcedure + "usp_Order_LoadByOrderGuid]", parameters);
+        }
 	}
 }

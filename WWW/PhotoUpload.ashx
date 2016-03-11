@@ -15,23 +15,28 @@ public class PhotoUpload : AsyncUploadHandler, System.Web.SessionState.IRequires
         try
         {
             PhotoAsyncUploadConfiguration pauConfiguration = configuration as PhotoAsyncUploadConfiguration;
-            int i = PhotoIndex;
+            int i = 1;
             int orderID = OrderID;
             if (pauConfiguration != null)
             {
-                if (OrderID == 0)
+                if (orderID == 0)
                 {
                     Order o = new Order();
                     o.AddNew();
                     o.DateCreated = DateTime.Now;
                     o.DeliveryID = pauConfiguration.DeliveryID;
                     o.ClientNote = "";
+                    o.OrderGuid = OrderGuid;
+                    o.PhotoCount = 1;
                     o.Save();
                     pauConfiguration.OrderID = o.OrderID;
                     result.OrderID = o.OrderID;
-                    OrderID = o.OrderID;
                     orderID = o.OrderID;
-                    i = 1;
+                }
+                else
+                {
+                    i = PhotoIndex;
+                    PhotoIndex = i;
                 }
             }
             string orderFolder = System.Web.HttpContext.Current.Server.MapPath(Utils.OrderImagePath + "//" + orderID);
@@ -85,8 +90,6 @@ public class PhotoUpload : AsyncUploadHandler, System.Web.SessionState.IRequires
                 fs.Close();
             }
             catch { }
-            i++;
-            PhotoIndex = i;
         }
         catch (Exception ex)
         {
@@ -98,39 +101,49 @@ public class PhotoUpload : AsyncUploadHandler, System.Web.SessionState.IRequires
     
     private int OrderID
     {
-        set
-        {
-            HttpCookie FOTOXATA_CURR_OrderIDCookie = new HttpCookie("FOTOXATA_CURR_OrderID", value.ToString());
-            HttpContext.Current.Response.Cookies.Add(FOTOXATA_CURR_OrderIDCookie);
-        }
-
         get
         {
             int orderID = 0;
-            if (HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderID"] != null)
+            if (OrderGuid != Guid.Empty)
             {
-                int.TryParse(HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderID"].Value.ToString(), out orderID);
+                Order o = new Order();
+                if(o.LoadByOrderGuid(OrderGuid))
+                {
+                    orderID = o.OrderID;
+                }
             }
             return orderID;
         }
     }
 
-    private int PhotoIndex
+    private Guid OrderGuid
     {
-        set
-        {
-            HttpCookie FOTOXATA_CURR_PhotoIndexCookie = new HttpCookie("FOTOXATA_CURR_PhotoIndex", value.ToString());
-            HttpContext.Current.Response.Cookies.Add(FOTOXATA_CURR_PhotoIndexCookie);
-        }
-
         get
         {
-            int photoIndex = 1;
-            if (HttpContext.Current.Request.Cookies["FOTOXATA_CURR_PhotoIndex"] != null)
+            Guid OrderGuid = Guid.Empty;
+            if (HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderGuid"] != null)
             {
-                int.TryParse(HttpContext.Current.Request.Cookies["FOTOXATA_CURR_PhotoIndex"].Value.ToString(), out photoIndex);
+                OrderGuid = new Guid(HttpContext.Current.Request.Cookies["FOTOXATA_CURR_OrderGuid"].Value.ToString());
             }
-            return photoIndex;
+            return OrderGuid;
+        }
+    }
+
+    private int PhotoIndex
+    {
+        get
+        {
+            Order o = new Order();
+            if (o.LoadByPrimaryKey(OrderID))
+            {
+                return o.PhotoCount + 1;
+            }
+            return 1;
+        }
+        set
+        {
+            Order o = new Order();
+            o.IncreasePhotoCount(OrderID);
         }
     }
 }

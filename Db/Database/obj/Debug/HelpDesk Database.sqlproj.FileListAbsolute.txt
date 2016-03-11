@@ -1,0 +1,10 @@
+E:\Micajah\HelpDesk\HelpDesk Database\bin\Debug\HelpDesk Database.dacpac
+E:\Micajah\HelpDesk\HelpDesk Database\bin\Debug\HelpDesk_Database.dll
+E:\Micajah\HelpDesk\HelpDesk Database\bin\Debug\HelpDesk_Database.pdb
+E:\Micajah\HelpDesk\HelpDesk Database\obj\Debug\HelpDesk_Database.dll
+E:\Micajah\HelpDesk\HelpDesk Database\obj\Debug\HelpDesk_Database.pdb
+E:\Micajah\HelpDesk\HelpDesk Database\obj\Debug\Model.xml
+E:\Micajah\HelpDesk\HelpDesk Database\obj\Debug\refactor.xml
+E:\Micajah\HelpDesk\HelpDesk Database\obj\Debug\postdeploy.sql
+E:\Micajah\HelpDesk\HelpDesk Database\obj\Debug\predeploy.sql
+E:\Micajah\HelpDesk\HelpDesk Database\obj\Debug\HelpDesk Database.sqlprojResolveAssemblyReference.cache

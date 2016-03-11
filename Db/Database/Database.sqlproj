@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">12.0</VisualStudioVersion>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{9b7a9c46-b4d3-4b03-8900-f5b06d8dd026}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>HelpDesk_Database</RootNamespace>
+    <AssemblyName>HelpDesk_Database</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Tables\" />
+    <Folder Include="Views\" />
+    <Folder Include="Storage\" />
+    <Folder Include="Security\" />
+    <Folder Include="Functions\" />
+    <Folder Include="Stored Procedures\" />
+    <Folder Include="SQLScripts" />
+    <Folder Include="SQLScripts\Insert Data" />
+    <Folder Include="SQLScripts\Modify Data" />
+    <Folder Include="Snapshots" />
+    <Folder Include="SQLScripts\Cleanup" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SqlSchemaCompareToLocalDatabase.scmp" />
+    <None Include="SqlSchemaCompareToProductionDatabase.scmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\UserUserType.sql" />
+    <Build Include="Tables\UserType.sql" />
+    <Build Include="Tables\User.sql" />
+    <Build Include="Tables\PhotoSalon.sql" />
+    <Build Include="Tables\PaperType.sql" />
+    <Build Include="Tables\OrderStatus.sql" />
+    <Build Include="Tables\OrderPhoto.sql" />
+    <Build Include="Tables\Order.sql" />
+    <Build Include="Tables\News.sql" />
+    <Build Include="Tables\Merchandise.sql" />
+    <Build Include="Tables\Gallery.sql" />
+    <Build Include="Tables\Error.sql" />
+    <Build Include="Tables\Delivery.sql" />
+    <Build Include="Tables\Category.sql" />
+    <Build Include="Tables\Appointment.sql" />
+    <Build Include="Tables\Advice.sql" />
+    <Build Include="Functions\udf_UserUserType_GetUserTypeList.sql" />
+    <Build Include="Functions\udf_Order_GetCountByDeliveryIDAndOrderStatusID.sql" />
+    <Build Include="Stored Procedures\usp_UserUserType_IsUserType.sql" />
+    <Build Include="Stored Procedures\usp_UserType_LoadByUserID.sql" />
+    <Build Include="Stored Procedures\usp_User_LoadWithPhotoSalonAddress.sql" />
+    <Build Include="Stored Procedures\usp_User_LoadPhotographer.sql" />
+    <Build Include="Stored Procedures\usp_OrderPhoto_LoadByOrderID.sql" />
+    <Build Include="Stored Procedures\usp_OrderPhoto_LoadByClientPhotoName.sql" />
+    <Build Include="Stored Procedures\usp_Order_LoadDashboard.sql" />
+    <Build Include="Stored Procedures\usp_Order_LoadByUserID.sql" />
+    <Build Include="Stored Procedures\usp_Order_LoadByDeliveryIDAndOrderStatusID.sql" />
+    <Build Include="Stored Procedures\usp_Order_CalculateAmount.sql" />
+    <Build Include="Stored Procedures\usp_Merchandise_LoadByCategoryID.sql" />
+    <Build Include="Stored Procedures\usp_Gallery_Move.sql" />
+    <Build Include="Stored Procedures\usp_Gallery_LoadByCategoryID.sql" />
+    <Build Include="Stored Procedures\usp_Category_TitleLoad.sql" />
+    <Build Include="Stored Procedures\usp_Category_PriceLoad.sql" />
+    <Build Include="Stored Procedures\usp_Appointment_LoadByUserID.sql" />
+    <Build Include="Stored Procedures\UpdateUserType.sql" />
+    <Build Include="Stored Procedures\UpdateUser.sql" />
+    <Build Include="Stored Procedures\UpdatePhotoSalon.sql" />
+    <Build Include="Stored Procedures\UpdatePaperType.sql" />
+    <Build Include="Stored Procedures\UpdateOrderStatus.sql" />
+    <Build Include="Stored Procedures\UpdateOrderPhotosAllUploaded.sql" />
+    <Build Include="Stored Procedures\UpdateOrderPhoto.sql" />
+    <Build Include="Stored Procedures\UpdateOrder.sql" />
+    <Build Include="Stored Procedures\UpdateNews.sql" />
+    <Build Include="Stored Procedures\UpdateMerchandise.sql" />
+    <Build Include="Stored Procedures\UpdateGallery.sql" />
+    <Build Include="Stored Procedures\UpdateError.sql" />
+    <Build Include="Stored Procedures\UpdateDelivery.sql" />
+    <Build Include="Stored Procedures\UpdateCategory.sql" />
+    <Build Include="Stored Procedures\UpdateAppointment.sql" />
+    <Build Include="Stored Procedures\UpdateAdvice.sql" />
+    <Build Include="Stored Procedures\LoadUserUserTypeByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadUserTypeByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadUserByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadPhotoSalonByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadPaperTypeByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadOrderStatusByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadOrderPhotoByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadOrderByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadNewsByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadMerchandiseByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadGalleryByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadErrorByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadDeliveryByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadCategoryByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadAppointmentByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\LoadAllUserUserType.sql" />
+    <Build Include="Stored Procedures\LoadAllUserType.sql" />
+    <Build Include="Stored Procedures\LoadAllUser.sql" />
+    <Build Include="Stored Procedures\LoadAllPhotoSalon.sql" />
+    <Build Include="Stored Procedures\LoadAllPaperType.sql" />
+    <Build Include="Stored Procedures\LoadAllOrderStatus.sql" />
+    <Build Include="Stored Procedures\LoadAllOrderPhoto.sql" />
+    <Build Include="Stored Procedures\LoadAllOrder.sql" />
+    <Build Include="Stored Procedures\LoadAllNews.sql" />
+    <Build Include="Stored Procedures\LoadAllMerchandise.sql" />
+    <Build Include="Stored Procedures\LoadAllGallery.sql" />
+    <Build Include="Stored Procedures\LoadAllError.sql" />
+    <Build Include="Stored Procedures\LoadAllDelivery.sql" />
+    <Build Include="Stored Procedures\LoadAllCategory.sql" />
+    <Build Include="Stored Procedures\LoadAllAppointment.sql" />
+    <Build Include="Stored Procedures\LoadAllAdvice.sql" />
+    <Build Include="Stored Procedures\LoadAdviceByPrimaryKey.sql" />
+    <Build Include="Stored Procedures\InsertUserUserType.sql" />
+    <Build Include="Stored Procedures\InsertUserType.sql" />
+    <Build Include="Stored Procedures\InsertUser.sql" />
+    <Build Include="Stored Procedures\InsertPhotoSalon.sql" />
+    <Build Include="Stored Procedures\InsertPaperType.sql" />
+    <Build Include="Stored Procedures\InsertOrderStatus.sql" />
+    <Build Include="Stored Procedures\InsertOrderPhoto.sql" />
+    <Build Include="Stored Procedures\InsertOrder.sql" />
+    <Build Include="Stored Procedures\InsertNews.sql" />
+    <Build Include="Stored Procedures\InsertMerchandise.sql" />
+    <Build Include="Stored Procedures\InsertGallery.sql" />
+    <Build Include="Stored Procedures\InsertError.sql" />
+    <Build Include="Stored Procedures\InsertDelivery.sql" />
+    <Build Include="Stored Procedures\InsertCategory.sql" />
+    <Build Include="Stored Procedures\InsertAppointment.sql" />
+    <Build Include="Stored Procedures\InsertAdvice.sql" />
+    <Build Include="Stored Procedures\DeleteUserUserType.sql" />
+    <Build Include="Stored Procedures\DeleteUserType.sql" />
+    <Build Include="Stored Procedures\DeleteUser.sql" />
+    <Build Include="Stored Procedures\DeletePhotoSalon.sql" />
+    <Build Include="Stored Procedures\DeletePaperType.sql" />
+    <Build Include="Stored Procedures\DeleteOrderStatus.sql" />
+    <Build Include="Stored Procedures\DeleteOrderPhotoByPhotoName.sql" />
+    <Build Include="Stored Procedures\DeleteOrderPhoto.sql" />
+    <Build Include="Stored Procedures\DeleteOrder.sql" />
+    <Build Include="Stored Procedures\DeleteNews.sql" />
+    <Build Include="Stored Procedures\DeleteMerchandise.sql" />
+    <Build Include="Stored Procedures\DeleteGallery.sql" />
+    <Build Include="Stored Procedures\DeleteError.sql" />
+    <Build Include="Stored Procedures\DeleteDelivery.sql" />
+    <Build Include="Stored Procedures\DeleteCategory.sql" />
+    <Build Include="Stored Procedures\DeleteAppointment.sql" />
+    <Build Include="Stored Procedures\DeleteAdvice.sql" />
+    <Build Include="Stored Procedures\usp_Order_IncreasePhotoCount.sql" />
+    <Build Include="Stored Procedures\usp_Order_LoadByOrderGuid.sql" />
+  </ItemGroup>
+</Project>

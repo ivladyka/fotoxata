@@ -157,7 +157,7 @@ color: #a1a1a1 !important;
 
     $(document).ready(function () {
         if ("<%=IsPostBack%>" == "False") {
-            VIKKI_SetCookie('FOTOXATA_CURR_OrderID', '0');
+            VIKKI_SetCookie('FOTOXATA_CURR_OrderGuid', '<%=NewGuidID%>');
         }
     });
 
@@ -356,7 +356,7 @@ color: #a1a1a1 !important;
 							<radg:GridBoundColumn HeaderText="<%$Resources:Fotoxata, Number%>" DataField="PhotoCount" UniqueName="PhotoCount">
 								<HeaderStyle Width="90px" HorizontalAlign="Center"></HeaderStyle>
 								<ItemStyle Font-Size="15px" BorderColor="#EAEAEA" />
-								<FooterStyle Font-Bold="true" ForeColor="White" Font-Size="12pt" HorizontalAlign="Center" />
+								<FooterStyle Font-Bold="true" Font-Size="12pt" HorizontalAlign="Center" />
 							</radg:GridBoundColumn>
 							<radg:GridCheckBoxColumn HeaderText="<%$Resources:Fotoxata, Border%>" DataField="Border" UniqueName="Border">
 							    <HeaderStyle Width="80px" HorizontalAlign="Center"></HeaderStyle>

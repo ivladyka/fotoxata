@@ -46,6 +46,7 @@ public partial class OrderPhotoList : ListControlBase, Interfaces.IColouredGrid
         SetColumnSettings(VikkiSoft_BLL.OrderPhoto.ColumnNames.PhotoName, true, Resources.Fotoxata.Photo, 60, HorizontalAlign.Center, "");
         SetColumnSettings("PaperTypeID", false, "", 0, HorizontalAlign.Center, "");
         SetColumnSettings("MerchandiseID", false, "", 0, HorizontalAlign.Center, "");
+        SetColumnSettings("PhotoAmount", false, "", 0, HorizontalAlign.Center, "");
     }
 
  protected override void OnEditableGridItemDataBound(object sender, GridItemEventArgs e)
