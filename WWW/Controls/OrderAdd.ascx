@@ -159,6 +159,11 @@ color: #a1a1a1 !important;
         if ("<%=IsPostBack%>" == "False") {
             VIKKI_SetCookie('FOTOXATA_CURR_OrderGuid', '<%=NewGuidID%>');
         }
+        if (navigator.userAgent.indexOf('Android') > 0 && navigator.userAgent.indexOf('Safari') > 0) {
+            Telerik.Web.UI.RadAsyncUpload.Modules.FileApi.isAvailable = function () { return false; }//disabling FileApi Module
+            Telerik.Web.UI.RadAsyncUpload.Modules.Silverlight.isAvailable = function () { return false; } // disabling Silverlight Module
+            Telerik.Web.UI.RadAsyncUpload.Modules.Flash.isAvailable = function () { return false; } // disabling Flash Module
+        }
     });
 
     function VIKKI_OnClientFileUploadRemoving(sender, args)
@@ -445,7 +450,7 @@ color: #a1a1a1 !important;
     <tr>
         <td >
         <div>
-            <uc1:PriceList id="priceList" runat="server"></uc1:PriceList>
+            <uc1:PriceList id="priceList" runat="server" SortByPrice="True"></uc1:PriceList>
             </div>
         </td>
     </tr>

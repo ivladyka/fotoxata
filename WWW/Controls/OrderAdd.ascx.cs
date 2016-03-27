@@ -292,6 +292,7 @@ public partial class OrderAdd : ControlBase
 
         Merchandise m = new Merchandise();
         m.Where.CategoryID.Value = CategoryID;
+        m.Query.AddOrderBy(VikkiSoft_BLL.Merchandise.ColumnNames.PriceFrom, WhereParameter.Dir.ASC);
         if (m.Query.Load())
         {
             m.DefaultView.Table.TableName = "PhotoFormat";

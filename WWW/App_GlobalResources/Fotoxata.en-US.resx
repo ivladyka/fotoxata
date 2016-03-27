@@ -289,7 +289,7 @@
     <value>Only files with the extension jpg, bmp, jpeg, png, tif and tiff can be uploaded to the server. Please remove files with other extensions.</value>
   </data>
   <data name="MaxImageSizeAlert" xml:space="preserve">
-    <value>Maximum file size is 100MB. Acceptable image formats sre jpg, bmp, jpeg, png, tif and tiff. Please remove files that marked by exclamation mark.</value>
+    <value>Maximum file size is 100MB. Acceptable image formats sre jpg, bmp, jpeg, png, tif and tiff. Please remove files that marked by red circle.</value>
   </data>
   <data name="MobilePhoneRequire" xml:space="preserve">
     <value>Mobile Phone is required field.</value>

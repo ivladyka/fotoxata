@@ -1,5 +1,6 @@
 ﻿using Telerik.WebControls;
 using VikkiSoft_BLL;
+using MyGeneration.dOOdads;
 
 public partial class PhotoFormatChoice : ChoiceControlBase
 {
@@ -12,6 +13,7 @@ public partial class PhotoFormatChoice : ChoiceControlBase
     {
         Merchandise m = new Merchandise();
         m.Where.CategoryID.Value = CategoryID;
+        m.Query.AddOrderBy(VikkiSoft_BLL.Merchandise.ColumnNames.PriceFrom, WhereParameter.Dir.ASC);
         if (m.Query.Load())
         {
             do

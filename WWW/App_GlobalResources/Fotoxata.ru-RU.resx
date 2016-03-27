@@ -289,7 +289,7 @@
     <value>Только файлы с расширением jpg, bmp, jpeg, png, tif и tiff могут быть загружены на сервер. Пожалуйста удалите файлы с другими расширениями.</value>
   </data>
   <data name="MaxImageSizeAlert" xml:space="preserve">
-    <value>Максимальный размер файла 100Мб. Допустимые форматы изображений jpg, bmp, jpeg, png, tif и tiff. Пожалуйста удалите файлы помеченные знаком.</value>
+    <value>Максимальный размер файла 100Мб. Допустимые форматы изображений jpg, bmp, jpeg, png, tif и tiff. Пожалуйста удалите файлы помеченные красным кругом.</value>
   </data>
   <data name="MobilePhoneRequire" xml:space="preserve">
     <value>Мобильный телефон - обязательное поле.</value>

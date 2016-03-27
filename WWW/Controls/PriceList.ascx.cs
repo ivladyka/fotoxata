@@ -3,9 +3,12 @@ using System.Data;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 using VikkiSoft_BLL;
+using MyGeneration.dOOdads;
 
 public partial class PriceList : ListControlBase, Interfaces.IColouredGrid
 {
+    private bool m_SortByPrice = false;
+
     public PriceList()
     {
         
@@ -101,6 +104,10 @@ public partial class PriceList : ListControlBase, Interfaces.IColouredGrid
         {
             return null;
         }
+        if(SortByPrice)
+        {
+            m.DefaultView.Sort = VikkiSoft_BLL.Merchandise.ColumnNames.PriceFrom + " ASC";
+        }
         return m.DefaultView.Table;
     }
 
@@ -128,6 +135,18 @@ public partial class PriceList : ListControlBase, Interfaces.IColouredGrid
                 }
             }
             return false;
+        }
+    }
+
+    public bool SortByPrice
+    {
+        get
+        {
+            return m_SortByPrice;
+        }
+        set
+        {
+            m_SortByPrice = value;
         }
     }
 
