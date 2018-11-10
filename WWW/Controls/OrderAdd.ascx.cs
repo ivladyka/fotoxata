@@ -28,20 +28,6 @@ public partial class OrderAdd : ControlBase
         base.InitOnFirstLoading();
         text_CellPhone.Focus();
         LoadLoggedUserCellPhone();
-        PhotoAsyncUploadConfiguration config = auFile.CreateDefaultUploadConfiguration<PhotoAsyncUploadConfiguration>();
-        config.DeliveryID = DeliveryID;
-        PaperType pt = new PaperType();
-        if (pt.LoadAll())
-        {
-            config.PaperTypeID = pt.PaperTypeID;
-        }
-        Merchandise m = new Merchandise();
-        m.Where.CategoryID.Value = CategoryID;
-        if (m.Query.Load())
-        {
-            config.MerchandiseID = m.MerchandiseID;
-        }
-        auFile.UploadConfiguration = config;
 
         auFile.TemporaryFolder = Utils.GaleryImagePath + "/RadUploadTemp";
         auFile.Localization.Select = Resources.Fotoxata.Select;
@@ -426,6 +412,20 @@ public partial class OrderAdd : ControlBase
             rgdOrderPhoto.MasterTableView.SortExpressions.AddSortExpression("OrderPhotoID DESC");
         }
         this.rgdOrderPhoto.ClientSettings.ClientEvents.OnGridCreated = "GetOrderPhotoGridObject";
+        PhotoAsyncUploadConfiguration config = auFile.CreateDefaultUploadConfiguration<PhotoAsyncUploadConfiguration>();
+        config.DeliveryID = DeliveryID;
+        PaperType pt = new PaperType();
+        if (pt.LoadAll())
+        {
+            config.PaperTypeID = pt.PaperTypeID;
+        }
+        Merchandise m = new Merchandise();
+        m.Where.CategoryID.Value = CategoryID;
+        if (m.Query.Load())
+        {
+            config.MerchandiseID = m.MerchandiseID;
+        }
+        auFile.UploadConfiguration = config;
         base.OnInit(e);
     }
 
