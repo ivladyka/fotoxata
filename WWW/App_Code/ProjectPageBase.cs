@@ -104,14 +104,14 @@ public class ProjectPageBase : System.Web.UI.Page
         {
             this.PageTitle = (userControl as Interfaces.INamedControl).Name;
         }
-        if (userControl is Interfaces.IColouredGrid)
+        /*if (userControl is Interfaces.IColouredGrid)
         {
             AddStyleSheet("~/RadControls/Grid/ColorSchemes/" + (userControl as Interfaces.IColouredGrid).GridColorScheme.ToString() + "/Styles.css");
         }
         else
         {
             AddStyleSheet("~/RadControls/Grid/ColorSchemes/Yellow/Styles.css");   
-        }
+        }*/
         
     }
 

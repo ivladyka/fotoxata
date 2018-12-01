@@ -187,34 +187,6 @@ color: #a1a1a1 !important;
         $("#" + row.id + " [name='RowRemove']").removeClass("ruCancel");
         $("#" + row.id + " [name='RowRemove']").val("Видалити");
     }
-
-    /*Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
-
-    function EndRequestHandler(sender, args) {
-        if (args.get_error() != undefined) {
-            var objError = args.get_error();
-            args.set_errorHandled(true);
-            alert(objError.message);
-            //showMessage({ messageType: 'error', message: objError.message });
-        }
-    }
-
-    if (!document.all) {
-        alert('hi2');
-        window.onbeforeunload = function () {
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(VIKKI_endRequest);
-        }
-    }
-
-    function VIKKI_endRequest(sender, e) {
-        alert('hi');
-        err = e.get_error();
-        if (err) {
-            if (err.name == "Sys.WebForms.PageRequestManagerServerErrorException") {
-                e.set_errorHandled(true);
-            }
-        }
-    }*/
 </script>
 </telerik:RadCodeBlock>
 <div class="dottedtop" style="margin-top: 10px; min-height:400px;">
@@ -283,8 +255,7 @@ color: #a1a1a1 !important;
                         <td align="right" style="width: 100px;"><asp:Label id="lblNumber" runat="server" Text="<%$Resources:Fotoxata, Number%>" />:</td>
                         <td style="width:100px;">
                             <telerik:RadNumericTextBox ID="rntbCount" runat="server" 
-                             MinValue="1" ShowSpinButtons="True" Skin="Sitefinity" 
-                            Width="60px">
+                             MinValue="1" ShowSpinButtons="True" Width="60px">
                             <NumberFormat DecimalDigits="0" DecimalSeparator="!" GroupSeparator="" />
                             </telerik:RadNumericTextBox>
                         </td>

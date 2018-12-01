@@ -5,7 +5,7 @@
 <%@ Register TagPrefix="uc1" TagName="MerchandiseList" Src="MerchandiseList.ascx" %>
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <br />
-<telerik:RadTabStrip ID="rtsCategory" runat="server" Skin="Sitefinity" AutoPostBack="true" Align="Justify" Width="747px" BorderColor="#EAEAEA" OnTabClick="rtsCategory1_TabClick">
+<telerik:RadTabStrip ID="rtsCategory" runat="server" AutoPostBack="true" Align="Justify" Width="747px" BorderColor="#EAEAEA" OnTabClick="rtsCategory1_TabClick">
     <Tabs>
         <telerik:RadTab Text="Категорія" Selected="True">
         </telerik:RadTab>

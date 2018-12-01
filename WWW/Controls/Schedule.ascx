@@ -16,7 +16,7 @@
                 <telerik:RadScheduler 
                 runat="server" 
                 ID="RadScheduler1" 
-                Skin="Sitefinity" Width="1000px"
+                Width="1000px"
                 Height="1030px"
                 SelectedDate="2009-02-02" 
                 DayEndTime="21:00:00"                        

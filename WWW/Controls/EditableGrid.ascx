@@ -18,7 +18,7 @@
 	AllowCustomPaging="True" Width="100%" AllowPaging="True"
 	CssClass="RadGrid" AllowMultiRowSelection="True" AllowMultiRowEdit="False"
 	AllowSorting="True" PageSize="20" RadControlsDir="~/RadControls/" 
-    Skin="Sitefinity" BorderColor="#a1a1a1" BorderWidth="0px" >
+     BorderColor="#a1a1a1" BorderWidth="0px">
     <GroupPanel>
 		<PanelStyle cssclass="GroupPanel"></PanelStyle>
 		<PanelItemsStyle cssclass="GroupPanelItem"></PanelItemsStyle>
@@ -92,5 +92,5 @@
 <asp:Button ID="btnRefreshEditableGrid" runat="server" 
         onclick="btnRefreshEditableGrid_Click" CssClass="VIKKI_HiddenButton"  ></asp:Button>
 </telerik:RadAjaxPanel>
-<telerik:RadAjaxLoadingPanel ID="ralpEditableGrid" runat="server" Skin="Sitefinity">
+<telerik:RadAjaxLoadingPanel ID="ralpEditableGrid" runat="server">
  </telerik:RadAjaxLoadingPanel>
