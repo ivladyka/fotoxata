@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGeneration.dOOdads", "Db\DALProjects\MyGeneration.dOOdads\MyGeneration.dOOdads.csproj", "{8666C149-F8D1-47CE-B5E2-BEE0BC844A9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fotoxata_DAL", "Db\DALProjects\Fotoxata_DAL\Fotoxata_DAL.csproj", "{E5AE142C-07CF-4F33-BC45-E86A6E6F7BE3}"
@@ -27,6 +29,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WWW", "WWW\", "{ACF131D4-0B
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "49535"
+		SlnRelativePath = "WWW\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 	ProjectSection(ProjectDependencies) = postProject
