@@ -90,6 +90,8 @@ public class PhotoUpload : AsyncUploadHandler, System.Web.SessionState.IRequires
                 fs.Close();
             }
             catch { }
+            string uploadTempFolder = System.Web.HttpContext.Current.Server.MapPath(Utils.GaleryImagePath + "/RadUploadTemp");
+            Utils.DeleteFile(uploadTempFolder, tempFileName);
         }
         catch (Exception ex)
         {
