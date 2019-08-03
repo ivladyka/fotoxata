@@ -78,7 +78,6 @@
     <siteMapNode url="~/Default.aspx?content=TreeView&#038;CategoryID=80" title="ЦІКАВЕ"  description="ЦІКАВЕ" >
       <siteMapNode url="~/Default.aspx?content=AdviceTableList" title="ПОРАДИ"  description="ПОРАДИ" />
       <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=66" title="АНЕКДОТИ"  description="АНЕКДОТИ" />
-      <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=67" title="СМІШНЕ ФОТО"  description="СМІШНЕ ФОТО" />
       <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=68" title="ПОДОРОЖІ"  description="ПОДОРОЖІ" />
       <siteMapNode url="~/Default.aspx?content=MerchandiseContentView&#038;CategoryID=69" title="КУРЙОЗИ З ЖИТТЯ ФОТОГРАФА"  description="КУРЙОЗИ З ЖИТТЯ ФОТОГРАФА" />
     </siteMapNode>
