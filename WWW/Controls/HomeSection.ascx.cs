@@ -58,7 +58,7 @@ public partial class Controls_HomeSection : System.Web.UI.UserControl
             {
                 content = content.Substring(0, 169) + " ...";
             }
-            lblContent.Text = content;
+            lblContent.InnerHtml = content;
         }
     }
 
@@ -82,7 +82,7 @@ public partial class Controls_HomeSection : System.Web.UI.UserControl
                 {
                     content = content.Substring(0, 99) + " ...";
                 }
-                lblContent.Text = content;
+                lblContent.InnerHtml = content;
             }
             
         }
@@ -136,7 +136,7 @@ public partial class Controls_HomeSection : System.Web.UI.UserControl
             {
                 content = content.Substring(0, 169) + " ...";
             }
-            lblContent.Text = content;
+            lblContent.InnerHtml = content;
         }
     }
 }
